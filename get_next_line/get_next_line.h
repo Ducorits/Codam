@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dritsema <dritsema@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/31 00:52:44 by dritsema          #+#    #+#             */
-/*   Updated: 2021/12/31 01:05:11 by dritsema         ###   ########.fr       */
+/*                                                         ::::::::           */
+/*   get_next_line.h                                     :+:    :+:           */
+/*                                                      +:+                   */
+/*   By: dritsema <dritsema@student.codam.nl>          +#+                    */
+/*                                                    +#+                     */
+/*   Created: 2021/12/31 14:09:41 by dritsema       #+#    #+#                */
+/*   Updated: 2021/12/31 14:52:27 by dritsema        ########   odam.nl       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_buf
 
 char	*get_next_line(int fd);
 int		newline_pos(t_buf read);
-int		check_newline(t_buf *buf);
+int		check_newline(t_buf *buf, t_buf r_buf);
 char	*past_newline(t_buf *buf);
 char	*add_to_str(t_buf read, t_buf *buf);
 

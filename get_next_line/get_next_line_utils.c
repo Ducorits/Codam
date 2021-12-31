@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dritsema <dritsema@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/31 00:45:38 by dritsema          #+#    #+#             */
-/*   Updated: 2021/12/31 01:10:46 by dritsema         ###   ########.fr       */
+/*                                                         ::::::::           */
+/*   get_next_line_utils.c                               :+:    :+:           */
+/*                                                      +:+                   */
+/*   By: dritsema <dritsema@student.codam.nl>          +#+                    */
+/*                                                    +#+                     */
+/*   Created: 2021/12/31 14:10:04 by dritsema       #+#    #+#                */
+/*   Updated: 2021/12/31 16:44:58 by dritsema        ########   odam.nl       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include "get_next_line.h"
 
-int	check_newline(t_buf *buf)
+int	check_newline(t_buf *buf, t_buf r_buf)
 {
 	int	count;
 
@@ -24,10 +24,10 @@ int	check_newline(t_buf *buf)
 		while (count < buf->size)
 		{
 			if (buf->content[count] == '\n')
-			{
 				return (count + 1);
-			}
 			count++;
+			if (count == buf->size && r_buf.size == 0)
+				return (count + 1);
 		}
 	}
 	return (0);
@@ -40,10 +40,9 @@ int	newline_pos(t_buf read)
 	i = 0;
 	while (i < read.size)
 	{
-		if (read.content[i] == '\n')
+		if (read.content[i] == '\n' || read.content[i] == '\0')
 		{
-			i++;
-			break ;
+			return (i + 1);
 		}
 		i++;
 	}
