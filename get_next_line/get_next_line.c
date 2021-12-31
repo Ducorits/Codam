@@ -1,52 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dritsema <dritsema@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/31 00:39:43 by dritsema          #+#    #+#             */
+/*   Updated: 2021/12/31 01:33:15 by dritsema         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
 #include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
-	static t_buf	read_buf;
-	t_buf					return_buf;
-	int						newline_index;
+	static t_buf	r_buf;
+	t_buf			buf;
 
-	return_buf.size = 0;
-	newline_index = -1;
-	while (newline_index == -1)
+	buf.size = 0;
+	while (!check_newline(&buf))
 	{
-		if (read_buf.content)
+		if (r_buf.size)
 		{
-			newline_index = check_newline(&read_buf);
-			if (newline_index != -1)
-			{
-				if (return_buf.content)
-					return_buf.content = str_join(&return_buf, &read_buf);
-				else
-				{
-					return_buf.content = until_newline(&read_buf, newline_index);
-					return_buf.size = newline_index + 1;
-				}
-					read_buf.content = past_newline(&read_buf, newline_index);
-				write(1, return_buf.content, return_buf.size);
-				return (return_buf.content);
-			}
-			else
-			{
-				return_buf.content = str_join(&return_buf, &read_buf);
-//				return_buf.size += read_buf.size;
-				read_buf.size = read(fd, read_buf.content, BUFFER_SIZE);
-//				return_buf.size += read_buf.size;
-//				printf("Newline Not inside\n");
-			}
+			buf.content = add_to_str(r_buf, &buf);
+			r_buf.content = past_newline(&r_buf);
 		}
 		else
 		{
-			read_buf.content = malloc(BUFFER_SIZE * sizeof(char));
-			read_buf.size = read(fd, read_buf.content, BUFFER_SIZE);
-//			return_buf.size += read_buf.size;
-//			printf("there was no buffer yet\n");
+			if (!r_buf.content)
+				r_buf.content = malloc(BUFFER_SIZE);
+			r_buf.size = read(fd, r_buf.content, BUFFER_SIZE);
+			if (!r_buf.size)
+			{
+				free(r_buf.content);
+				return (0);
+			}
 		}
 	}
-	return ("");
+	if (buf.content)
+		return (buf.content);
+	return (0);
 }
-

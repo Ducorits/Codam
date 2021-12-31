@@ -1,7 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dritsema <dritsema@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/31 00:45:38 by dritsema          #+#    #+#             */
+/*   Updated: 2021/12/31 01:10:46 by dritsema         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
 #include "get_next_line.h"
 
 int	check_newline(t_buf *buf)
@@ -9,73 +19,76 @@ int	check_newline(t_buf *buf)
 	int	count;
 
 	count = 0;
-	while (count < buf->size)
+	if (buf->content)
 	{
-		if (buf->content[count] == '\n')
+		while (count < buf->size)
 		{
-			return (count);
+			if (buf->content[count] == '\n')
+			{
+				return (count + 1);
+			}
+			count++;
 		}
-		count++;
 	}
-	return (-1);
+	return (0);
 }
 
-char	*past_newline(t_buf *buf, int newline_index)
+int	newline_pos(t_buf read)
 {
-	int		i;
+	int	i;
 
 	i = 0;
-	while (i + newline_index + 1 < buf->size)
+	while (i < read.size)
 	{
-		buf->content[i] = buf->content[i + newline_index + 1];
+		if (read.content[i] == '\n')
+		{
+			i++;
+			break ;
+		}
 		i++;
 	}
-	buf->size = i;
-	return (buf->content);
+	return (i);
 }
 
-char	*str_join(t_buf *return_buf, t_buf *read_buf)
+char	*past_newline(t_buf *read)
 {
-	char	*str;
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
-//	printf("%p %p %i %i\n", return_buf->content, read_buf->content, return_buf->size, read_buf->size); 
-	str = malloc((return_buf->size + read_buf->size + 1) * sizeof(char));
-	i = 0;
-	while (i < return_buf->size)
-	{
-		str[i] = return_buf->content[i];
-//		printf("%c", return_buf->content[i]);
-		i++;
-	}
+	i = newline_pos(*read);
 	j = 0;
-	while (j < read_buf->size)
+	while (j < read->size - i)
 	{
-		str[i + j] = read_buf->content[j];
-//		printf("%c", read_buf->content[j]);
+		read->content[j] = read->content[i + j];
 		j++;
 	}
-	return_buf->size += read_buf->size;
-	if (return_buf->content)
-		free(return_buf->content);
-//	printf("\n");
-	return (str);
+	read->size = j;
+	return (read->content);
 }
 
-char	*until_newline(t_buf *buf, int newline_index)
+char	*add_to_str(t_buf read, t_buf *buf)
 {
 	int		i;
+	int		j;
 	char	*str;
 
-	i = 0;
-	str = malloc((newline_index + 2) * sizeof(char));
-	while (i <= newline_index)
+	i = newline_pos(read);
+	str = malloc(buf->size + i + 1);
+	j = 0;
+	while (j < buf->size)
 	{
-		str[i] = buf->content[i];
-		i++;
+		str[j] = buf->content[j];
+		j++;
 	}
-	str[i] = '\0';
+	j = 0;
+	while (j < i)
+	{
+		str[buf->size + j] = read.content[j];
+		j++;
+	}
+	str[buf->size + i] = '\0';
+	if (buf->size)
+		free(buf->content);
+	buf->size = buf->size + i;
 	return (str);
 }
-

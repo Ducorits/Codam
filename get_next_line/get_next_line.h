@@ -1,14 +1,28 @@
-#ifndef GET_NEXT_LINE_H
-#define GET_NEXT_LINE_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dritsema <dritsema@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/31 00:52:44 by dritsema          #+#    #+#             */
+/*   Updated: 2021/12/31 01:05:11 by dritsema         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-typedef struct	s_buf {
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+
+typedef struct s_buf
+{
 	int		size;
 	char	*content;
 }	t_buf;
+
 char	*get_next_line(int fd);
+int		newline_pos(t_buf read);
 int		check_newline(t_buf *buf);
-char	*past_newline(t_buf *buf, int newline_index);
-char	*str_join(t_buf *return_buf, t_buf *read_buf);
-char	*until_newline(t_buf *buf, int newline_index);
+char	*past_newline(t_buf *buf);
+char	*add_to_str(t_buf read, t_buf *buf);
 
 #endif
