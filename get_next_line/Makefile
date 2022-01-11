@@ -5,7 +5,7 @@ OBJS = $(SRCS:.c=.o)
 
 NAME = get_next_line.a
 
-CC = clang
+CC = gcc
 
 TESTFLAGS = -fsanitize=address -g
 

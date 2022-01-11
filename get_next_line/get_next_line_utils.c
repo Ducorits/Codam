@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ::::::::           */
-/*   get_next_line_utils.c                               :+:    :+:           */
-/*                                                      +:+                   */
-/*   By: dritsema <dritsema@student.codam.nl>          +#+                    */
-/*                                                    +#+                     */
-/*   Created: 2021/12/31 14:10:04 by dritsema       #+#    #+#                */
-/*   Updated: 2021/12/31 16:44:58 by dritsema        ########   odam.nl       */
+/*                                                        ::::::::            */
+/*   get_next_line_utils.c                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/31 14:10:04 by dritsema      #+#    #+#                 */
+/*   Updated: 2022/01/09 15:46:09 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 #include "get_next_line.h"
+#include <stdio.h>
 
-int	check_newline(t_buf *buf, t_buf r_buf)
+int	check_newline(t_return *buf)
 {
 	int	count;
 
@@ -23,11 +24,9 @@ int	check_newline(t_buf *buf, t_buf r_buf)
 	{
 		while (count < buf->size)
 		{
-			if (buf->content[count] == '\n')
+			if (buf->content[count] == '\n' || buf->content[count] == '\0')
 				return (count + 1);
 			count++;
-			if (count == buf->size && r_buf.size == 0)
-				return (count + 1);
 		}
 	}
 	return (0);
@@ -49,7 +48,7 @@ int	newline_pos(t_buf read)
 	return (i);
 }
 
-char	*past_newline(t_buf *read)
+void	past_newline(t_buf *read)
 {
 	int	i;
 	int	j;
@@ -62,10 +61,9 @@ char	*past_newline(t_buf *read)
 		j++;
 	}
 	read->size = j;
-	return (read->content);
 }
 
-char	*add_to_str(t_buf read, t_buf *buf)
+char	*add_to_str(t_buf read, t_return *buf)
 {
 	int		i;
 	int		j;
