@@ -5,7 +5,7 @@ OBJS = $(SRCS:.c=.o)
 
 NAME = get_next_line.a
 
-CC = gcc
+CC = clang
 
 TESTFLAGS = -fsanitize=address -g
 
@@ -22,7 +22,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS)42 -c $<
 
 test%: test.c
-	$(CC) $(CFLAGS)$(@:test%=%) $(TESTFLAGS) $(SRCS) test.c -o test
+	$(CC) $(CFLAGS)$(@:test%=%) $(SRCS) test.c -o test
 	./test
 
 clean:

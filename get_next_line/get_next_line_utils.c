@@ -6,14 +6,12 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/31 14:10:04 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/01/09 15:46:09 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/01/12 12:42:11 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <unistd.h>
 #include "get_next_line.h"
-#include <stdio.h>
 
 int	check_newline(t_return *buf)
 {
@@ -70,7 +68,9 @@ char	*add_to_str(t_buf read, t_return *buf)
 	char	*str;
 
 	i = newline_pos(read);
-	str = malloc(buf->size + i + 1);
+	str = malloc(sizeof(char) * buf->size + i + 1);
+	if (str == NULL)
+		return (NULL);
 	j = 0;
 	while (j < buf->size)
 	{
