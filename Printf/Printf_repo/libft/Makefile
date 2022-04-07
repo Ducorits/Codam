@@ -53,7 +53,7 @@ NAME = libft.a
 
 OBJS = $(SRCS:.c=.o)
 
-all: $(NAME)($(OBJS))
+all: $(NAME)($(OBJS)
 
 $(NAME): %.o libft.h
 	ar rs $@ $<
