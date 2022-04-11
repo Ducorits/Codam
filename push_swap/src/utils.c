@@ -6,59 +6,66 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 15:58:57 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/07 21:03:44 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/04/11 20:26:44 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <unistd.h>
 #include "../libft/libft.h"
-
-// int	cartoi(char *str)
-// {
-// 	int	num;
-// 	int	min;
-
-// 	while (*str)
-// 	{
-// 		if (*str >= '0' && *str <= '9')
-// 		{
-// 			num *= 10;
-// 			num += *str - '0';
-// 		}
-// 		else if (*str == '-')
-// 		{
-// 			min = 1;
-// 		}
-// 		else if (*str == '+')
-// 		{
-// 			min = 0;
-// 		}
-// 		else
-// 		{
-// 			write(1, "Error\n", 6);
-// 			return (0);
-// 		}
-// 	}
-// 	if (min)
-// 		num *= -1;
-// 	return (num);
-// }
+#include <unistd.h>
 
 
-t_link	*make_stack(int argc, char **argv)
+void	add_to_bottom(t_stack *stack, t_link *new)
 {
-	t_link	*link;
-	int		num;
+	if (stack->bottom == 0 && stack->top == 0)
+	{
+		stack->bottom = new;
+		stack->top = new;
+	}
+	else
+	{
+		new->previous = stack->bottom;
+		stack->bottom->next = new;
+		stack->bottom = new;
+	}
+}
+
+void	*fill_stack(t_stack *stack, char **argv)
+{
 	int		i;
+	t_link	*link;
 
 	i = 0;
-	link = malloc(sizeof(t_link));
-	while (i < argc)
+	while (argv[i + 1])
 	{
-	num = ft_atoi(argv[i]);
-	link->content = malloc(sizeof(int) * num);
-	i++;
+		link = malloc(sizeof(t_link));
+		link->content = ft_atoi(argv[i + 1]);
+		add_to_bottom(stack, link);
+		i++;
 	}
-	return (link);
+	return (stack);
 }
+
+t_stack	*init_stack(void)
+{
+	t_stack	*stack;
+
+	stack = malloc(sizeof(t_stack));
+	return (stack);
+}
+
+// int	error_check(int argc, char **argv)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (i < argc - 1)
+// 	{
+// 		i++;
+// 	}
+// }
+
+// void	freestack(t_link **stack);
+// {
+	
+// }

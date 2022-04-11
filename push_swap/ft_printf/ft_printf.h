@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   ft_printf.h                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/07 13:08:22 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/11 20:28:41 by dritsema      ########   odam.nl         */
+/*   Created: 2022/04/11 13:11:13 by dritsema      #+#    #+#                 */
+/*   Updated: 2022/04/11 13:11:14 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-#include "../ft_printf/ft_printf.h"
-#include <unistd.h>
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	main(int argc, char **argv)
-{
-	t_stack	*stack_a;
-	int		i;
-
-	if (argc > 1)
-	{
-		stack_a = init_stack();
-		fill_stack(stack_a, argv);
-		if (stack_a == 0)
-		{
-			write(1, "Error", 5);
-			return (0);
-		}
-		i = 0;
-		while (i < argc -1)
-		{
-			ft_printf("%p\n", stack_a->top);
-			i++;
-		}
-	}
-	else
-		return (0);
-	return (0);
-}
+// printf stuff?
+int	ft_printf(const char *s, ...);
+int	ft_printhex(unsigned long n);
+int	ft_upprinthex(unsigned long n);
+int	ft_printun(unsigned int n);
+int	ft_printchar(char c);
+int	ft_printnbr(int n);
+int	ft_printstr(char *s);
+#endif /* FT_PRINTF>H */

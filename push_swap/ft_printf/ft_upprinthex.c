@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   ft_upprinthex.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/07 13:08:22 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/11 20:28:41 by dritsema      ########   odam.nl         */
+/*   Created: 2021/11/06 15:26:18 by dritsema      #+#    #+#                 */
+/*   Updated: 2022/01/17 18:14:48 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-#include "../ft_printf/ft_printf.h"
 #include <unistd.h>
 
-int	main(int argc, char **argv)
+int	ft_upprinthex(unsigned long n)
 {
-	t_stack	*stack_a;
-	int		i;
+	int	count;
 
-	if (argc > 1)
+	count = 0;
+	if (n > 15)
 	{
-		stack_a = init_stack();
-		fill_stack(stack_a, argv);
-		if (stack_a == 0)
-		{
-			write(1, "Error", 5);
-			return (0);
-		}
-		i = 0;
-		while (i < argc -1)
-		{
-			ft_printf("%p\n", stack_a->top);
-			i++;
-		}
+		count = ft_upprinthex(n / 16);
 	}
-	else
-		return (0);
-	return (0);
+	if ((n % 16) < 10)
+	{
+		n = (n % 16) + 48;
+		write(1, &n, 1);
+		count++;
+	}
+	if ((n % 16) >= 10)
+	{
+		n = (n % 16) - 10 + 'A';
+		write(1, &n, 1);
+		count++;
+	}
+	return (count);
 }
