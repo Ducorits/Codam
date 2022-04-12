@@ -6,11 +6,12 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 15:58:57 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/11 20:26:44 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/04/12 21:24:40 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include "../ft_printf/ft_printf.h"
 #include "../libft/libft.h"
 #include <unistd.h>
 
@@ -24,6 +25,7 @@ void	add_to_bottom(t_stack *stack, t_link *new)
 	}
 	else
 	{
+		ft_printf("here? %p\n", stack->bottom);
 		new->previous = stack->bottom;
 		stack->bottom->next = new;
 		stack->bottom = new;
