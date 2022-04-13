@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:20 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/11 20:26:54 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/04/13 19:52:19 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ struct s_stack
 	t_link	*bottom;
 };
 
-t_stack	*init_stack(void);
-void	*fill_stack(t_stack *stack, char **argv);
-t_stack	*make_stack(int argc, char **argv);
-void	add_to_bottom(t_stack *stack, t_link *new);
+t_link	*init_stack(void);
+void	fill_stack(t_link **stack, char **argv);
+t_link	*make_stack(int argc, char **argv);
+void	add_to_bottom(t_link **stack, t_link *new);
 
 #endif //PUSH_SWAP_H
