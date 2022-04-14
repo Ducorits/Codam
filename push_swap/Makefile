@@ -2,13 +2,13 @@ CC		=	gcc
 
 CFLAGS	=	-Wall -Werror -Wextra -fsanitize=address -g
 
-SRCS	=	main.c utils.c #push.c swap.c
+SRCS	=	main.c stack_utils.c error_check.c rotate.c #push.c swap.c
 
 OBJS	=	$(patsubst %.c, obj/%.o, $(SRCS))
 
 NAME	=	push_swap
 
-INC		=	-I /libft/ -I /ft_printf/
+INC		=	-Ilibft -Ift_printf -I.
 
 LIBFT	=	libft/libft.a
 
@@ -21,7 +21,7 @@ $(NAME): $(OBJS) $(LIBFT) $(FT_PRINTF)
 
 obj/%.o: src/%.c
 	@mkdir -p obj
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 $(LIBFT):
 	make TESTFLAGS=1 -C libft/

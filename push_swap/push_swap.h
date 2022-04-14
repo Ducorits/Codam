@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:20 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/13 19:52:19 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/04/14 19:51:32 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,27 @@
 # define PUSH_SWAP_H
 
 typedef struct s_link	t_link;
-typedef struct s_stack	t_stack;
 struct	s_link
 {
 	struct s_link	*previous;
 	int				content;
 	struct s_link	*next;
 };
-struct s_stack
-{
-	t_link	*top;
-	t_link	*bottom;
-};
 
-t_link	*init_stack(void);
-void	fill_stack(t_link **stack, char **argv);
-t_link	*make_stack(int argc, char **argv);
+// Stack utility functions
+t_link	**make_empty_stack(void);
+t_link	**make_stack(char **argv);
+void	add_to_top(t_link **stack, t_link *new);
 void	add_to_bottom(t_link **stack, t_link *new);
+// Input error checking
+int		input_error_check(int argc, char **argv);
+// Rotate functions
+void	rotate(t_link **stack);
+void	rotate_both(t_link **stack_1, t_link **stack_2);
+void	rev_rotate(t_link **stack);
+void	rev_rotate_both(t_link **stack_1, t_link **stack_2);
+// Push functions
+
+// Swap functions
 
 #endif //PUSH_SWAP_H
