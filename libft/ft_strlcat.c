@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   swap.c                                             :+:    :+:            */
+/*   ft_strlcat.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/07 15:58:53 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/14 21:17:00 by dritsema      ########   odam.nl         */
+/*   Created: 2021/10/15 14:10:43 by dritsema      #+#    #+#                 */
+/*   Updated: 2021/10/15 14:37:08 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	swap(t_link **stack)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	(*stack)->next->previous = (*stack)->previous;
-	(*stack)->previous->next = (*stack)->next;
-	(*stack)->previous = (*stack)->next;
-	(*stack)->next = (*stack)->next->next;
-	(*stack)->previous->next = *stack;
-	(*stack)->next->previous = *stack;
-	*stack =  (*stack)->previous;
+	size_t	i;
+	size_t	srclen;
+	size_t	dstlen;
+
+	i = 0;
+	srclen = ft_strlen(src);
+	dstlen = ft_strlen(dst);
+	if (dstlen >= dstsize)
+		return (srclen + dstsize);
+	while (src[i] != '\0' && dstsize - dstlen - 1 > i)
+	{
+		dst[dstlen + i] = src[i];
+		i++;
+	}
+	dst[dstlen + i] = '\0';
+	return (srclen + dstlen);
 }

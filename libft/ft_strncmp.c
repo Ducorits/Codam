@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   swap.c                                             :+:    :+:            */
+/*   ft_strncmp.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/07 15:58:53 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/14 21:17:00 by dritsema      ########   odam.nl         */
+/*   Created: 2021/10/08 15:47:31 by dritsema      #+#    #+#                 */
+/*   Updated: 2021/11/02 12:51:32 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	swap(t_link **stack)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	(*stack)->next->previous = (*stack)->previous;
-	(*stack)->previous->next = (*stack)->next;
-	(*stack)->previous = (*stack)->next;
-	(*stack)->next = (*stack)->next->next;
-	(*stack)->previous->next = *stack;
-	(*stack)->next->previous = *stack;
-	*stack =  (*stack)->previous;
+	size_t	i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	while ((unsigned char) s1[i] == (unsigned char) s2[i]
+		&& (unsigned char) s1[i] && (unsigned char) s2[i] && i < n - 1)
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

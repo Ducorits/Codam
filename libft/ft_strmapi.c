@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   swap.c                                             :+:    :+:            */
+/*   ft_strmapi.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/07 15:58:53 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/14 21:17:00 by dritsema      ########   odam.nl         */
+/*   Created: 2021/10/21 17:46:14 by dritsema      #+#    #+#                 */
+/*   Updated: 2021/10/21 18:24:42 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	swap(t_link **stack)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	(*stack)->next->previous = (*stack)->previous;
-	(*stack)->previous->next = (*stack)->next;
-	(*stack)->previous = (*stack)->next;
-	(*stack)->next = (*stack)->next->next;
-	(*stack)->previous->next = *stack;
-	(*stack)->next->previous = *stack;
-	*stack =  (*stack)->previous;
+	char	*str;
+	int		len;
+	int		i;
+
+	if (s == NULL)
+		return (NULL);
+	len = ft_strlen(s);
+	str = (char *)malloc((len + 1) * sizeof(char));
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[len] = '\0';
+	return (str);
 }

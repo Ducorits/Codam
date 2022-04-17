@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   swap.c                                             :+:    :+:            */
+/*   ft_calloc.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/07 15:58:53 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/14 21:17:00 by dritsema      ########   odam.nl         */
+/*   Created: 2021/10/15 14:41:16 by dritsema      #+#    #+#                 */
+/*   Updated: 2021/10/15 15:18:49 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	swap(t_link **stack)
+void	*ft_calloc(size_t count, size_t size)
 {
-	(*stack)->next->previous = (*stack)->previous;
-	(*stack)->previous->next = (*stack)->next;
-	(*stack)->previous = (*stack)->next;
-	(*stack)->next = (*stack)->next->next;
-	(*stack)->previous->next = *stack;
-	(*stack)->next->previous = *stack;
-	*stack =  (*stack)->previous;
+	void	*ptr;
+
+	ptr = (void *)malloc(count * size);
+	if (ptr)
+		ft_bzero(ptr, count * size);
+	return (ptr);
 }

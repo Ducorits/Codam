@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   swap.c                                             :+:    :+:            */
+/*   ft_lstadd_back_bonus.c                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/07 15:58:53 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/14 21:17:00 by dritsema      ########   odam.nl         */
+/*   Created: 2021/10/26 16:49:48 by dritsema      #+#    #+#                 */
+/*   Updated: 2021/11/02 12:01:05 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	swap(t_link **stack)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	(*stack)->next->previous = (*stack)->previous;
-	(*stack)->previous->next = (*stack)->next;
-	(*stack)->previous = (*stack)->next;
-	(*stack)->next = (*stack)->next->next;
-	(*stack)->previous->next = *stack;
-	(*stack)->next->previous = *stack;
-	*stack =  (*stack)->previous;
+	t_list	*last;
+
+	if (*lst == NULL)
+		*lst = new;
+	else
+	{
+		last = ft_lstlast(*lst);
+		last->next = new;
+	}
 }

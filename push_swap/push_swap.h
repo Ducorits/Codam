@@ -36,5 +36,6 @@ void	rev_rotate_both(t_link **stack_1, t_link **stack_2);
 // Push functions
 
 // Swap functions
+void	swap(t_link **stack);
 
 #endif //PUSH_SWAP_H

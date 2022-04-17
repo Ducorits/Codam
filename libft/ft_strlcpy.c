@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   swap.c                                             :+:    :+:            */
+/*   ft_strlcpy.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/07 15:58:53 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/14 21:17:00 by dritsema      ########   odam.nl         */
+/*   Created: 2021/10/13 12:04:29 by dritsema      #+#    #+#                 */
+/*   Updated: 2021/10/13 14:23:19 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	swap(t_link **stack)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	(*stack)->next->previous = (*stack)->previous;
-	(*stack)->previous->next = (*stack)->next;
-	(*stack)->previous = (*stack)->next;
-	(*stack)->next = (*stack)->next->next;
-	(*stack)->previous->next = *stack;
-	(*stack)->next->previous = *stack;
-	*stack =  (*stack)->previous;
+	size_t	srclen;
+
+	srclen = ft_strlen(src);
+	if (srclen + 1 < dstsize)
+	{
+		ft_memcpy(dst, src, srclen + 1);
+	}
+	else if (dstsize != 0)
+	{
+		ft_memcpy(dst, src, dstsize);
+		dst[dstsize - 1] = '\0';
+	}
+	return (srclen);
 }
