@@ -14,6 +14,7 @@
 #include "ft_printf.h"
 #include "libft.h"
 #include <unistd.h>
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
@@ -22,12 +23,11 @@ int	main(int argc, char **argv)
 	t_link	*link;
 	int		i;
 
-	input_error_check(argc, &argv[1]);
-	if (argc > 1)
+	if (argc > 1 && !input_error_check(argc, &argv[1]))
 	{
 		stack_a = make_stack(argv);
 		stack_b = make_empty_stack();
-		
+		swap(stack_a);
 		
 		i = 0;
 		link = 0;
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 				link = link->next;
 			else
 				link = *stack_a;
-			ft_printf("pos %i: %i\n", i, link->content);
+			printf("pos %i: %i\n", i, link->content);
 			i++;
 		}
 	}

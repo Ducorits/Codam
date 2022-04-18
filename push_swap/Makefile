@@ -1,8 +1,12 @@
 CC		=	gcc
 
+ifeq ($(TESTFLAGS), 1)
 CFLAGS	=	-Wall -Werror -Wextra -fsanitize=address -g
+else
+CFLAGS	=	-Wall -Werror -Wextra
+endif
 
-SRCS	=	main.c stack_utils.c error_check.c rotate.c #push.c swap.c
+SRCS	=	main.c stack_utils.c error_check.c rotate.c swap.c #push.c
 
 OBJS	=	$(patsubst %.c, obj/%.o, $(SRCS))
 
@@ -23,14 +27,19 @@ obj/%.o: src/%.c
 	@mkdir -p obj
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
+ifeq ($(TESTFLAGS), 1)
 $(LIBFT):
-	make TESTFLAGS=1 -C libft/
+	make -C libft/
 
 $(FT_PRINTF):
-	make TESTFLAGS=1 -C ft_printf/
+	make -C ft_printf/
+else
+$(LIBFT):
+	make TESTFLAGS=$(TESTFLAGS) -C libft/
 
-test: obj/test.o $(LIBFT) $(FT_PRINTF) 
-	$(CC) $^ $(INC) -o test_yes
+$(FT_PRINTF):
+	make TESTFLAGS=$(TESTFLAGS) -C ft_printf/
+endif
 
 clean:
 	@rm -f *.o

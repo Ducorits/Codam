@@ -14,11 +14,21 @@
 
 void	swap(t_link **stack)
 {
-	(*stack)->next->previous = (*stack)->previous;
-	(*stack)->previous->next = (*stack)->next;
-	(*stack)->previous = (*stack)->next;
-	(*stack)->next = (*stack)->next->next;
-	(*stack)->previous->next = *stack;
-	(*stack)->next->previous = *stack;
-	*stack =  (*stack)->previous;
+	int	tmp;
+
+	tmp = (*stack)->next->content;
+	(*stack)->next->content = (*stack)->content;
+	(*stack)->content = tmp;
+}
+
+void	swap_both(t_link **stack_1, t_link **stack_2)
+{
+	int	tmp;
+
+	tmp = (*stack_1)->next->content;
+	(*stack_1)->next->content = (*stack_1)->content;
+	(*stack_1)->content = tmp;
+	tmp = (*stack_2)->next->content;
+	(*stack_2)->next->content = (*stack_2)->content;
+	(*stack_2)->content = tmp;
 }
