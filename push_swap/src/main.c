@@ -28,18 +28,33 @@ int	main(int argc, char **argv)
 		stack_a = make_stack(argv);
 		stack_b = make_empty_stack();
 		swap(stack_a);
+		push(stack_a, stack_b);
+		push(stack_a, stack_b);
 		
 		i = 0;
 		link = 0;
-		while (i < argc -1)
+		while (link != (*stack_a)->next)
 		{
 			if (link)
-				link = link->next;
+				link = link->previous;
 			else
 				link = *stack_a;
-			printf("pos %i: %i\n", i, link->content);
+			printf("stack a pos %i: %i\n", i, link->content);
 			i++;
 		}
+		link = 0;
+		i = 0;
+		while (link != (*stack_b)->next)
+		{
+			if (link)
+				link = link->previous;
+			else
+				link = *stack_b;
+			printf("stack b pos %i: %i\n", i, link->content);
+			i++;
+		}
+		freestack(stack_a);
+		freestack(stack_b);
 	}
 	else
 		return (0);

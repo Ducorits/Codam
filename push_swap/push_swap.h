@@ -24,17 +24,21 @@ struct	s_link
 // Stack utility functions
 t_link	**make_empty_stack(void);
 t_link	**make_stack(char **argv);
+int		freestack(t_link **stack);
 void	add_to_top(t_link **stack, t_link *new);
 void	add_to_bottom(t_link **stack, t_link *new);
+
 // Input error checking
 int		input_error_check(int argc, char **argv);
+
 // Rotate functions
 void	rotate(t_link **stack);
 void	rotate_both(t_link **stack_1, t_link **stack_2);
 void	rev_rotate(t_link **stack);
 void	rev_rotate_both(t_link **stack_1, t_link **stack_2);
-// Push functions
 
+// Push functions
+void	push(t_link **stack_1, t_link **stack_2);
 
 // Swap functions
 void	swap(t_link **stack);
