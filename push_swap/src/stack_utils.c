@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 15:58:57 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/14 19:50:35 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/04/18 20:24:30 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ t_link	**make_stack(char **argv)
 
 int	freestack(t_link **stack)
 {
-	t_link *tmp;
+	t_link	*tmp;
 
 	if (stack != 0)
 	{
