@@ -6,7 +6,7 @@ else
 CFLAGS	=	-Wall -Werror -Wextra
 endif
 
-SRCS	=	main.c stack_utils.c error_check.c rotate.c swap.c push.c
+SRCS	=	main.c stack_utils.c error_check.c rotate.c swap.c push.c sort.c
 
 OBJS	=	$(patsubst %.c, obj/%.o, $(SRCS))
 

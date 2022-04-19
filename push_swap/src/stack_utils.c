@@ -6,13 +6,13 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 15:58:57 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/18 20:24:30 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/04/19 14:55:49 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-#include "../ft_printf/ft_printf.h"
-#include "../libft/libft.h"
+#include "push_swap.h"
+#include "ft_printf.h"
+#include "libft.h"
 #include <unistd.h>
 
 void	add_to_bottom(t_link **stack, t_link *new)
@@ -82,7 +82,9 @@ int	freestack(t_link **stack)
 	if (stack != 0)
 	{
 		if (*stack == 0)
+		{
 			free(stack);
+		}
 		else
 		{
 			tmp = (*stack)->previous;
