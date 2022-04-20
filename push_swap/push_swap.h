@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:20 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/19 15:45:11 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/04/20 19:26:46 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	add_to_bottom(t_link **stack, t_link *new);
 int		input_error_check(int argc, char **argv);
 
 // Rotate functions
+void	ra(t_link **stack_a);
+void	rb(t_link **stack_b);
+void	rr(t_link **stack_a, t_link **stack_b);
 void	rra(t_link **stack_a);
 void	rrb(t_link **stack_b);
 void	rrr(t_link **stack_a, t_link **stack_b);
@@ -44,10 +47,15 @@ void	rev_rotate_both(t_link **stack_1, t_link **stack_2);
 void	push(t_link **stack_1, t_link **stack_2);
 
 // Swap functions
+void	pa(t_link **stack_a, t_link **stack_b);
+void	pb(t_link **stack_a, t_link **stack_b);
 void	swap(t_link **stack);
 void	swap_both(t_link **stack_1, t_link **stack_2);
 
 // Sort functions
 int		sort(t_link **stack_a, t_link **stack_b, int argc);
+
+// Testing functions (remove before publish)
+void	print_stacks(t_link **stack_a, t_link **stack_b);
 
 #endif //PUSH_SWAP_H

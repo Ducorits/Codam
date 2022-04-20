@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/19 14:34:01 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/19 15:39:49 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/04/20 19:37:23 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,21 @@
 #include "push_swap.h"
 #include <unistd.h>
 
-void	divide(int average, int lowest, t_link **stack_a, t_link **stack_b)
+void	divide(int average, t_link **stack_a, t_link **stack_b)
 {
 	t_link	*tmp;
 
 	tmp = *stack_a;
-	while ((*stack_a)->next != tmp)
+	while (1)
 	{
+		ft_printf("current content: %i\n", (*stack_a)->content);
 		if ((*stack_a)->content < average)
 		{
-			push(stack_a, stack_b);
-			write(2, "pb\n", 3);
+			pb(stack_a, stack_b);
 		}
-		rotate(stack_a);
-		write(2, "sa\n", 3);
+		if ((*stack_a)->next == tmp)
+			break ;
+		ra(stack_a);
 	}
 }
 
@@ -58,6 +59,6 @@ int	sort(t_link **stack_a, t_link **stack_b, int argc)
 	}
 	average /= (argc - 1);
 	ft_printf("%i\n", average);
-	divide(average, lowest, stack_a, stack_b);
+	divide(average, stack_a, stack_b);
 	return (average);
 }

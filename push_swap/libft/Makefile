@@ -47,7 +47,11 @@ BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 CC = gcc
 
+ifeq ($(TESTFLAGS), 1)
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g 
+else
 CFLAGS = -Wall -Wextra -Werror
+endif
 
 NAME = libft.a
 

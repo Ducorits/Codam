@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 15:58:53 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/18 20:24:53 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/04/20 19:25:54 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ void	swap(t_link **stack)
 {
 	int	tmp;
 
-	tmp = (*stack)->next->content;
-	(*stack)->next->content = (*stack)->content;
-	(*stack)->content = tmp;
+	if (*stack == 0 && (*stack)->next != *stack)
+	{
+		tmp = (*stack)->next->content;
+		(*stack)->next->content = (*stack)->content;
+		(*stack)->content = tmp;
+	}
 }
 
 void	swap_both(t_link **stack_1, t_link **stack_2)

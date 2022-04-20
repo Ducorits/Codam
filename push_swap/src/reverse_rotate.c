@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/19 15:41:10 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/19 15:44:44 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/04/20 19:23:16 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,14 @@ void	rrr(t_link **stack_a, t_link **stack_b)
 
 void	rev_rotate(t_link **stack)
 {
-	*stack = (*stack)->previous;
+	if (*stack != 0)
+		*stack = (*stack)->previous;
 }
 
 void	rev_rotate_both(t_link **stack_1, t_link **stack_2)
 {
-	*stack_1 = (*stack_1)->previous;
-	*stack_2 = (*stack_2)->previous;
+	if (*stack_1 != 0)
+		*stack_1 = (*stack_1)->previous;
+	if (*stack_2 != 0)
+		*stack_2 = (*stack_2)->previous;
 }

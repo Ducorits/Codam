@@ -6,42 +6,39 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/11 14:01:44 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/18 20:27:03 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/04/20 18:30:11 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf/ft_printf.h"
+#include "ft_printf.h"
+#include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	print_stacks(t_link **stack_a, t_link **stack_b)
 {
-	while (*argv)
-	{
-		ft_printf("%s\n", *argv);
-		argv++;
-	}
-	argc = argc;
-	return (0);
-}
+	t_link	*tmp;
 
-		// i = 0;
-		// link = 0;
-		// while (link != (*stack_a)->next)
-		// {
-		// 	if (link)
-		// 		link = link->previous;
-		// 	else
-		// 		link = *stack_a;
-		// 	ft_printf("stack a pos %i: %i\n", i, link->content);
-		// 	i++;
-		// }
-		// link = 0;
-		// i = 0;
-		// while (link != (*stack_b)->next)
-		// {
-		// 	if (link)
-		// 		link = link->previous;
-		// 	else
-		// 		link = *stack_b;
-		// 	ft_printf("stack b pos %i: %i\n", i, link->content);
-		// 	i++;
-		// }
+	tmp = 0;
+	if (*stack_a != 0)
+	{
+		while (tmp != (*stack_a)->previous)
+		{
+			if (tmp == 0)
+				tmp = *stack_a;
+			else
+				tmp = tmp->next;
+			ft_printf("Stack_a: %i\n", tmp->content);
+		}
+	}
+	if (*stack_b != 0)
+	{
+		tmp = 0;
+		while (tmp != (*stack_b)->previous)
+		{
+			if (tmp == 0)
+				tmp = *stack_b;
+			else
+				tmp = tmp->next;
+			ft_printf("Stack_b: %i\n", tmp->content);
+		}
+	}
+}

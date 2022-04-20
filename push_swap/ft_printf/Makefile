@@ -14,7 +14,11 @@ HEADERS = ft_printf.h
 
 CC= gcc
 
+ifeq ($(TESTFLAGS), 1)
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g 
+else
 CFLAGS = -Wall -Wextra -Werror
+endif
 
 NAME = libftprintf.a
 
@@ -25,13 +29,8 @@ all: $(NAME)($(OBJS))
 $(NAME): %.o $(HEADERS)
 	ar rs $@ $<
 
-ifeq ($(TESTFLAGS), 1)
-%.o: %.c
-	$(CC) $(CFLAGS) -fsanitize=address -g -c $<
-else
 %.o: %.c
 	$(CC) $(CFLAGS) -c $<
-endif
 
 bonus: $(NAME)($(OBJS)) $(NAME)($(BONUS_OBJS))
 
