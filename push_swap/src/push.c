@@ -6,24 +6,12 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 15:58:47 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/20 19:04:33 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/02 17:57:04 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <unistd.h>
-
-void	pa(t_link **stack_a, t_link **stack_b)
-{
-	push(stack_b, stack_a);
-	write(2, "pa\n", 3);
-}
-
-void	pb(t_link **stack_a, t_link **stack_b)
-{
-	push(stack_a, stack_b);
-	write(2, "pb\n", 3);
-}
 
 void	push(t_link **stack_1, t_link **stack_2)
 {
@@ -45,4 +33,16 @@ void	push(t_link **stack_1, t_link **stack_2)
 			*stack_1 = 0;
 		}
 	}
+}
+
+void	pa(t_link **stack_a, t_link **stack_b)
+{
+	push(stack_b, stack_a);
+	write(2, "pa\n", 3);
+}
+
+void	pb(t_link **stack_a, t_link **stack_b)
+{
+	push(stack_a, stack_b);
+	write(2, "pb\n", 3);
 }

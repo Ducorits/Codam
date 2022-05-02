@@ -1,36 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   bubble_sort.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/07 13:08:22 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/02 17:35:33 by dritsema      ########   odam.nl         */
+/*   Created: 2022/05/02 17:36:02 by dritsema      #+#    #+#                 */
+/*   Updated: 2022/05/02 19:30:15 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf.h"
-#include "libft.h"
-#include <unistd.h>
-#include <stdio.h>
 
-int	main(int argc, char **argv)
+void	bubble_sort(t_link **stack_a, int argc)
 {
-	t_link	**stack_a;
-	t_link	**stack_b;
+	int	size;
+	int	i;
 
-	if (argc > 1 && !input_error_check(argc, &argv[1]))
+	size = argc - 1;
+	i = 0;
+	while (i < size)
 	{
-		stack_a = make_stack(argv);
-		stack_b = make_empty_stack();
-		sort(stack_a, stack_b, argc);
-		print_stacks(stack_a, stack_b);
-		freestack(stack_a);
-		freestack(stack_b);
+		print_stack(stack_a);
+		if ((*stack_a)->content > (*stack_a)->next->content)
+		{
+			sa(stack_a);
+			// print_stack(stack_a);
+			// ra(stack_a);
+		}
+		else if (size > 2)
+		{
+			ra(stack_a);
+		}
+		i++;
 	}
-	else
-		return (0);
-	return (0);
+	ra(stack_a);
+	print_stack(stack_a);
+	if (check_sorted(stack_a, size) == 0)
+	{
+		ft_printf("check_sorted == 0\n");
+		bubble_sort(stack_a, argc);
+	}
 }

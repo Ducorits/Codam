@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:20 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/20 19:26:46 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/02 19:12:52 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,24 +38,23 @@ void	rr(t_link **stack_a, t_link **stack_b);
 void	rra(t_link **stack_a);
 void	rrb(t_link **stack_b);
 void	rrr(t_link **stack_a, t_link **stack_b);
-void	rotate(t_link **stack);
-void	rotate_both(t_link **stack_1, t_link **stack_2);
-void	rev_rotate(t_link **stack);
-void	rev_rotate_both(t_link **stack_1, t_link **stack_2);
 
 // Push functions
-void	push(t_link **stack_1, t_link **stack_2);
-
-// Swap functions
 void	pa(t_link **stack_a, t_link **stack_b);
 void	pb(t_link **stack_a, t_link **stack_b);
-void	swap(t_link **stack);
-void	swap_both(t_link **stack_1, t_link **stack_2);
+
+// Swap functions
+void	sa(t_link **stack_a);
+void	sb(t_link **stack_b);
+void	ss(t_link **tack_a, t_link **stack_b);
 
 // Sort functions
+void	bubble_sort(t_link **stack_a, int argc);
 int		sort(t_link **stack_a, t_link **stack_b, int argc);
 
 // Testing functions (remove before publish)
+int		check_sorted(t_link **stack, int size);
 void	print_stacks(t_link **stack_a, t_link **stack_b);
+void	print_stack(t_link **stack);
 
 #endif //PUSH_SWAP_H

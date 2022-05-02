@@ -6,17 +6,19 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 15:58:53 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/20 19:25:54 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/02 19:09:15 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <unistd.h>
+#include "ft_printf.h" // for testing
 
 void	swap(t_link **stack)
 {
 	int	tmp;
 
-	if (*stack == 0 && (*stack)->next != *stack)
+	if (*stack != 0 && (*stack)->next != *stack)
 	{
 		tmp = (*stack)->next->content;
 		(*stack)->next->content = (*stack)->content;
@@ -24,14 +26,21 @@ void	swap(t_link **stack)
 	}
 }
 
-void	swap_both(t_link **stack_1, t_link **stack_2)
+void	sa(t_link **stack_a)
 {
-	int	tmp;
+	swap(stack_a);
+	write(2, "sa\n", 3);
+}
 
-	tmp = (*stack_1)->next->content;
-	(*stack_1)->next->content = (*stack_1)->content;
-	(*stack_1)->content = tmp;
-	tmp = (*stack_2)->next->content;
-	(*stack_2)->next->content = (*stack_2)->content;
-	(*stack_2)->content = tmp;
+void	sb(t_link **stack_b)
+{
+	swap(stack_b);
+	write(2, "sb\n", 3);
+}
+
+void	ss(t_link **stack_a, t_link **stack_b)
+{
+	swap(stack_a);
+	swap(stack_b);
+	write(2, "ss\n", 3);
 }
