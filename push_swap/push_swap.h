@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:20 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/02 19:12:52 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/04 19:51:43 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ struct	s_link
 
 // Stack utility functions
 t_link	**make_empty_stack(void);
-t_link	**make_stack(char **argv);
+void	fill_stack(char **argv, t_link **stack);
 int		freestack(t_link **stack);
 void	add_to_top(t_link **stack, t_link *new);
 void	add_to_bottom(t_link **stack, t_link *new);

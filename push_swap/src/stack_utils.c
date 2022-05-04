@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 15:58:57 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/02 17:56:52 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/04 20:07:28 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,65 +38,38 @@ void	add_to_top(t_link **stack, t_link *new)
 	*stack = new;
 }
 
-t_link	**make_empty_stack(void)
-{
-	t_link	**stack;
-
-	stack = malloc(sizeof(t_link *));
-	if (stack == 0)
-		return (0);
-	*stack = 0;
-	return (stack);
-}
-
-t_link	**make_stack(char **argv)
+void	fill_stack(char **argv, t_link **stack)
 {
 	int		i;
-	t_link	**stack;
 	t_link	*link;
 
-	stack = malloc(sizeof(t_link *));
-	*stack = malloc(sizeof(t_link));
-	if (*stack == 0 || stack == 0)
-		return (0);
-	(*stack)->content = ft_atoi(argv[1]);
-	(*stack)->next = *stack;
-	(*stack)->previous = *stack;
-	i = 2;
+	i = 1;
 	while (argv[i])
 	{
 		link = malloc(sizeof(t_link));
-		if (link == 0)
-			return (0);
 		link->content = ft_atoi(argv[i]);
 		add_to_bottom(stack, link);
 		i++;
 	}
-	return (stack);
 }
 
 int	freestack(t_link **stack)
 {
 	t_link	*tmp;
 
-	if (stack != 0)
+	if (*stack == 0)
 	{
-		if (*stack == 0)
-		{
-			free(stack);
-		}
-		else
-		{
-			tmp = (*stack)->previous;
-			while (*stack != tmp)
-			{
-				(*stack) = (*stack)->next;
-				free((*stack)->previous);
-			}
-			free(*stack);
-			free(stack);
-		}
 		return (1);
 	}
-	return (0);
+	else
+	{
+		tmp = (*stack)->previous;
+		while (*stack != tmp)
+		{
+			(*stack) = (*stack)->next;
+			free((*stack)->previous);
+		}
+		free(*stack);
+	}
+	return (1);
 }

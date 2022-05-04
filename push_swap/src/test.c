@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/11 14:01:44 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/02 19:22:44 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/04 19:59:55 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,8 @@
 
 void	print_stacks(t_link **stack_a, t_link **stack_b)
 {
-	t_link	*tmp;
-
-	tmp = 0;
-	if (*stack_a != 0)
-	{
-		while (tmp != (*stack_a)->previous)
-		{
-			if (tmp == 0)
-				tmp = *stack_a;
-			else
-				tmp = tmp->next;
-			ft_printf("Stack_a: %i\n", tmp->content);
-		}
-	}
-	if (*stack_b != 0)
-	{
-		tmp = 0;
-		while (tmp != (*stack_b)->previous)
-		{
-			if (tmp == 0)
-				tmp = *stack_b;
-			else
-				tmp = tmp->next;
-			ft_printf("Stack_b: %i\n", tmp->content);
-		}
-	}
+	print_stack(stack_a);
+	print_stack(stack_b);
 }
 
 void	print_stack(t_link **stack)
@@ -75,7 +51,6 @@ int	check_sorted(t_link **stack, int size)
 		{
 			if (tmp->content > tmp->next->content)
 			{
-				ft_printf("tmp > tmp->next, size:%i\n", size);
 				return (0);
 			}
 			tmp = tmp->next;

@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 17:36:02 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/02 19:30:15 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/04 20:01:20 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,19 @@ void	bubble_sort(t_link **stack_a, int argc)
 	while (i < size)
 	{
 		print_stack(stack_a);
-		if ((*stack_a)->content > (*stack_a)->next->content)
+		if ((*stack_a)->content > (*stack_a)->next->content && i != size - 1)
 		{
 			sa(stack_a);
-			// print_stack(stack_a);
-			// ra(stack_a);
 		}
-		else if (size > 2)
-		{
-			ra(stack_a);
-		}
+		ra(stack_a);
 		i++;
 	}
-	ra(stack_a);
 	print_stack(stack_a);
 	if (check_sorted(stack_a, size) == 0)
 	{
-		ft_printf("check_sorted == 0\n");
+		ft_printf("Not sorted go again\n");
 		bubble_sort(stack_a, argc);
 	}
+	else
+		ft_printf("It's sorted you good bro\n");
 }
