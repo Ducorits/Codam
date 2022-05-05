@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 15:58:53 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/02 19:09:15 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/05 18:54:39 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,18 @@ void	swap(t_link **stack)
 void	sa(t_link **stack_a)
 {
 	swap(stack_a);
-	write(2, "sa\n", 3);
+	write(1, "sa\n", 3);
 }
 
 void	sb(t_link **stack_b)
 {
 	swap(stack_b);
-	write(2, "sb\n", 3);
+	write(1, "sb\n", 3);
 }
 
 void	ss(t_link **stack_a, t_link **stack_b)
 {
 	swap(stack_a);
 	swap(stack_b);
-	write(2, "ss\n", 3);
+	write(1, "ss\n", 3);
 }

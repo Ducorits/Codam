@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:20 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/04 19:51:43 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/05 20:08:40 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ struct	s_link
 {
 	struct s_link	*previous;
 	int				content;
+	unsigned int	index;
 	struct s_link	*next;
 };
 
@@ -50,6 +51,7 @@ void	ss(t_link **tack_a, t_link **stack_b);
 
 // Sort functions
 void	bubble_sort(t_link **stack_a, int argc);
+void	radix_sort(t_link **stack_a, t_link **stack_b, int argc, int highest);
 int		sort(t_link **stack_a, t_link **stack_b, int argc);
 
 // Testing functions (remove before publish)

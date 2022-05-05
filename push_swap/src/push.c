@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 15:58:47 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/02 17:57:04 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/05 18:54:27 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	push(t_link **stack_1, t_link **stack_2)
 void	pa(t_link **stack_a, t_link **stack_b)
 {
 	push(stack_b, stack_a);
-	write(2, "pa\n", 3);
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_link **stack_a, t_link **stack_b)
 {
 	push(stack_a, stack_b);
-	write(2, "pb\n", 3);
+	write(1, "pb\n", 3);
 }

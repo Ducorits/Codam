@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/11 14:01:44 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/04 19:59:55 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/05 16:11:00 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 void	print_stacks(t_link **stack_a, t_link **stack_b)
 {
+	ft_printf("\nStack_a:\n");
 	print_stack(stack_a);
+	ft_printf("\nStack_B:\n");
 	print_stack(stack_b);
 }
 
@@ -32,7 +34,7 @@ void	print_stack(t_link **stack)
 				tmp = *stack;
 			else
 				tmp = tmp->next;
-			ft_printf("Stack_a: %i\n", tmp->content);
+			ft_printf("- %i\n", tmp->content);
 		}
 	}
 }

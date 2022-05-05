@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 19:25:12 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/02 17:56:31 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/05 18:54:46 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ void	rotate_both(t_link **stack_1, t_link **stack_2)
 void	ra(t_link **stack_a)
 {
 	rotate(stack_a);
-	write(2, "ra\n", 3);
+	write(1, "ra\n", 3);
 }
 
 void	rb(t_link **stack_b)
 {
 	rotate(stack_b);
-	write(2, "ra\n", 3);
+	write(1, "ra\n", 3);
 }
 
 void	rr(t_link **stack_a, t_link **stack_b)
 {
 	rotate_both(stack_a, stack_b);
-	write(2, "rr\n", 3);
+	write(1, "rr\n", 3);
 }
