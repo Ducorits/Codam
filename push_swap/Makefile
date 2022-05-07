@@ -35,10 +35,10 @@ $(FT_PRINTF):
 	make -C ft_printf/
 else
 $(LIBFT):
-	make TESTFLAGS=$(TESTFLAGS) -C libft/
+	make -C libft/
 
 $(FT_PRINTF):
-	make TESTFLAGS=$(TESTFLAGS) -C ft_printf/
+	make -C ft_printf/
 endif
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/19 14:34:01 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/05 22:30:12 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/07 16:30:12 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,43 @@ void	bad_sort(int average, t_link **stack_a, t_link **stack_b, int size)
 	}
 }
 
-// void	sort_indexes(t_link **stack_a, int argc)
-// {
-// 	t_link	*tmp;
-// 	int		*values;
-// 	int		lowest;
-// 	int		highest;
+void	push_lowest(t_link **copy_a, t_link **copy_b, t_link *lowest)
+{
+	while ((*copy_a)->index != lowest->index)
+	{
+		ft_printf("copy_a index: %i Lowest index: %i\n", (*copy_a)->index, lowest->index);
+		*copy_a = (*copy_a)->next;
+	}
+	push(copy_a, copy_b);
+}
 
-// 	values = malloc(sizeof(int) * argc - 1);
-// 	tmp = *stack_a;
-// 	while ()
-// 	while (tmp != (*stack_a)->previous)
-// 	{
-// 		if (tmp->content > highest)
-// 			highest = tmp->content;
-// 		if (tmp->content < lowest)
-// 			lowest = tmp->content;
-// 		tmp = tmp->next;
-// 	}
-// }
+void	sort_indexes(t_link **copy_a, t_link **copy_b, int argc)
+{
+	t_link	*tmp;
+	t_link	*lowest;
+	int		i;
+	int		j;
+
+	i = 0;
+	tmp = *copy_a;
+	while (i < argc - 1)
+	{	
+		j = 0 + i;
+		while (tmp != (*copy_a)->previous)
+		{
+			if (tmp->content < lowest->content)
+			{
+				lowest = tmp;
+			}
+			ft_printf("tmp: %p\n", tmp);
+			tmp = tmp->next;
+			j++;
+		}
+		push_lowest(copy_a, copy_b, lowest);
+		i++;
+		print_stack(copy_b);
+	}
+}
 
 int	sort(t_link **stack_a, t_link **stack_b, int argc)
 {
@@ -77,7 +95,6 @@ int	sort(t_link **stack_a, t_link **stack_b, int argc)
 	int		lowest;
 	long	average;
 	t_link	*tmp;
-	int		
 
 	highest = 0;
 	lowest = 0;

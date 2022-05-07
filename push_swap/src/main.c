@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:22 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/05 18:36:50 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/07 16:22:50 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,22 @@ int	main(int argc, char **argv)
 {
 	t_link	*stack_a;
 	t_link	*stack_b;
+	t_link	*stack_copy_a;
+	t_link	*stack_copy_b;
 
 	if (argc > 1 && !input_error_check(argc, &argv[1]))
 	{
 		stack_a = 0;
 		stack_b = 0;
+		stack_copy_a = 0;
+		stack_copy_b = 0;
+		fill_stack(argv, &stack_copy_a);
 		fill_stack(argv, &stack_a);
+		sort_indexes(&stack_copy_a, &stack_copy_b, argc);
 		sort(&stack_a, &stack_b, argc);
-		// print_stacks(&stack_a, &stack_b);
+		print_stacks(&stack_a, &stack_b);
+		freestack(&stack_copy_a);
+		freestack(&stack_copy_b);
 		freestack(&stack_a);
 		freestack(&stack_b);
 	}

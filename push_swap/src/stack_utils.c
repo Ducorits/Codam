@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 15:58:57 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/05 20:10:12 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/07 16:13:08 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	fill_stack(char **argv, t_link **stack)
 	{
 		link = malloc(sizeof(t_link));
 		link->content = ft_atoi(argv[i]);
+		link->index = i;
 		add_to_bottom(stack, link);
 		i++;
 	}
