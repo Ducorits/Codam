@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/19 14:34:01 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/07 16:30:12 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/08 15:27:11 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,54 +14,49 @@
 #include "push_swap.h"
 #include <unistd.h>
 
-void	divide(int average, t_link **stack_a, t_link **stack_b)
+void	update_indexes(t_link **stack_a, t_link **copy_a, int size)
 {
 	t_link	*tmp;
-
-	tmp = *stack_a;
-	while (1)
-	{
-		ft_printf("current content: %i\n", (*stack_a)->content);
-		if ((*stack_a)->content < average)
-		{
-			pb(stack_a, stack_b);
-		}
-		if ((*stack_a)->next == tmp)
-			break ;
-		ra(stack_a);
-	}
-}
-
-void	bad_sort(int average, t_link **stack_a, t_link **stack_b, int size)
-{
-	int	i;
+	int		i;
 
 	i = 0;
-	while (i <= size)
+	tmp = *stack_a;
+	while (i < size)
 	{
-		ft_printf("Stack_a current: %i\n", (*stack_a)->content);
-		if ((*stack_a)->content <= average)
+		while (tmp->content != (*copy_a)->content)
 		{
-			pb(stack_a, stack_b);
-			size--;
+			tmp = tmp->next;
 		}
-		else
-			ra(stack_a);
+		tmp->index = (*copy_a)->index;
+		*copy_a = (*copy_a)->next;
 		i++;
 	}
 }
 
 void	push_lowest(t_link **copy_a, t_link **copy_b, t_link *lowest)
 {
-	while ((*copy_a)->index != lowest->index)
+	while (*copy_a != lowest)
 	{
-		ft_printf("copy_a index: %i Lowest index: %i\n", (*copy_a)->index, lowest->index);
 		*copy_a = (*copy_a)->next;
 	}
+	// ft_printf("pushed lowest\n");
 	push(copy_a, copy_b);
 }
 
-void	sort_indexes(t_link **copy_a, t_link **copy_b, int argc)
+void	empty_to_stack(t_link **a, t_link **b, int size)
+{
+	int	i;
+
+	i = size - 1;
+	while (*a)
+	{
+		(*a)->index = i;
+		push(a, b);
+		i--;
+	}
+}
+
+void	sort_indexes(t_link **copy_a, t_link **copy_b, int size)
 {
 	t_link	*tmp;
 	t_link	*lowest;
@@ -69,24 +64,29 @@ void	sort_indexes(t_link **copy_a, t_link **copy_b, int argc)
 	int		j;
 
 	i = 0;
-	tmp = *copy_a;
-	while (i < argc - 1)
+	while (i < size)
 	{	
 		j = 0 + i;
-		while (tmp != (*copy_a)->previous)
+		tmp = *copy_a;
+		lowest = *copy_a;
+		while (j < size)
 		{
 			if (tmp->content < lowest->content)
 			{
 				lowest = tmp;
+				// ft_printf("update lowest to: %i\n", lowest->content);
 			}
-			ft_printf("tmp: %p\n", tmp);
+			// ft_printf("j: %i size:%i\n", j, size);
 			tmp = tmp->next;
 			j++;
 		}
 		push_lowest(copy_a, copy_b, lowest);
 		i++;
-		print_stack(copy_b);
+		// print_stack(copy_b);
 	}
+	empty_to_stack(copy_b, copy_a, size);
+	// ft_printf("copy_a:\n");
+	// print_stack(copy_a);
 }
 
 int	sort(t_link **stack_a, t_link **stack_b, int argc)
@@ -111,7 +111,7 @@ int	sort(t_link **stack_a, t_link **stack_b, int argc)
 	}
 	average /= (argc - 1);
 	// ft_printf("%i\n", average);
-	radix_sort(stack_a, stack_b, argc, highest);
+	radix_sort(stack_a, stack_b, argc);
 	// bubble_sort(stack_a, argc);
 	// bad_sort(average, stack_a, stack_b, argc - 1);
 	// divide(average, stack_a, stack_b);
