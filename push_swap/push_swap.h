@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:20 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/08 18:46:45 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/09 16:33:32 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,13 @@ void	ss(t_link **tack_a, t_link **stack_b);
 // Sort functions
 void	bubble_sort(t_link **stack_a, int argc);
 void	radix_sort(t_link **stack_a, t_link **stack_b, int argc);
+void	quick_sort(t_link **stack_a, t_link **stack_b, int size);
 void	sort_indexes(t_link **copy_a, t_link **copy_b, int argc);
 int		sort(t_link **stack_a, t_link **stack_b, int argc);
 void	update_indexes(t_link **stack_a, t_link **copy_a, int size);
 
 // Testing functions (remove before publish)
-int		check_sorted(t_link **stack);
+int		check_sorted(t_link **stack, int size);
 void	print_stacks(t_link **stack_a, t_link **stack_b);
 void	print_stack(t_link **stack);
 

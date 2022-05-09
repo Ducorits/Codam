@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:22 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/08 15:27:25 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/09 18:42:23 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,13 @@ int	main(int argc, char **argv)
 		stack_copy_b = 0;
 		fill_stack(argv, &stack_copy_a);
 		fill_stack(argv, &stack_a);
+		ft_printf("Sort based on indexes\n");
 		sort_indexes(&stack_copy_a, &stack_copy_b, argc - 1);
+		ft_printf("Update indexes\n");
 		update_indexes(&stack_a, &stack_copy_a, argc - 1);
-		radix_sort(&stack_a, &stack_b, argc);
+		ft_printf("Quick sort\n");
+		quick_sort(&stack_a, &stack_b, argc - 2);
+		// radix_sort(&stack_a, &stack_b, argc);
 		// print_stacks(&stack_a, &stack_b);
 		freestack(&stack_copy_a);
 		freestack(&stack_copy_b);

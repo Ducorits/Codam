@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/05 14:26:37 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/08 18:49:48 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/09 16:41:14 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	print_binary(int n)
 	recur(n);
 }
 
-void	empty_b(t_link **stack_a, t_link **stack_b)
+static void	empty_b(t_link **stack_a, t_link **stack_b)
 {
 	while (*stack_b)
 	{
@@ -51,10 +51,10 @@ void	radix_sort(t_link **stack_a, t_link **stack_b, int argc)
 
 	size = argc - 1;
 	shift = 0;
-	while (check_sorted(stack_a) == 0)
+	while (check_sorted(stack_a, 0) == 0)
 	{
 		i = 0;
-		while (i < size && check_sorted(stack_a) == 0)
+		while (i < size && check_sorted(stack_a, 0) == 0)
 		{
 			tmp = (*stack_a)->index;
 			// print_binary((*stack_a)->index);
