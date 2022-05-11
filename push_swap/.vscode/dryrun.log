@@ -1,5 +1,0 @@
-make --dry-run --keep-going --print-directory
-make: Entering directory '/home/dritsema/Codam/push_swap'
-make: Nothing to be done for 'all'.
-make: Leaving directory '/home/dritsema/Codam/push_swap'
- 
