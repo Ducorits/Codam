@@ -6,7 +6,19 @@ else
 CFLAGS	=	-Wall -Werror -Wextra
 endif
 
-SRCS	=	main.c stack_utils.c error_check.c rotate.c reverse_rotate.c swap.c push.c sort.c test.c bubble_sort.c radix_sort.c quick_sort.c
+SRCS	=	main.c \
+			error_check.c \
+			stack_utils.c \
+			sort_utils.c \
+			rotate.c \
+			reverse_rotate.c \
+			swap.c \
+			push.c \
+			test.c \
+			sort.c \
+			bubble_sort.c \
+			radix_sort.c \
+			quick_sort2.c
 
 OBJS	=	$(patsubst %.c, obj/%.o, $(SRCS))
 

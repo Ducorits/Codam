@@ -1,0 +1,495 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Wed May 11 21:55:51 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+WSLENV = ELECTRON_RUN_AS_NODE/w:
+# default
+.SHELLFLAGS := -c
+# makefile (from 'Makefile', line 31)
+FT_PRINTF = ft_printf/libftprintf.a
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /home/dritsema/Codam/push_swap
+ 
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
+# environment
+_ = /mnt/c/Users/ducor/AppData/Local/Programs/Microsoft VS Code/bin/code
+# makefile (from 'Makefile', line 6)
+CFLAGS = -Wall -Werror -Wextra
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# makefile (from 'Makefile', line 23)
+OBJS = $(patsubst %.c, obj/%.o, $(SRCS))
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+VSCODE_CWD = /mnt/c/Users/ducor/AppData/Local/Programs/Microsoft VS Code
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /home/dritsema/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/WindowsApps/CanonicalGroupLimited.Ubuntu20.04onWindows_2004.2022.8.0_x64__79rhkp1fndgsc:/mnt/c/Program Files/Eclipse Adoptium/jdk-17.0.1.12-hotspot/bin:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/PuTTY/:/mnt/c/Users/ducor/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/ducor/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/ducor/AppData/Local/GitHubDesktop/bin:/mnt/c/adb:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Inkscape/bin:/mnt/c/Users/ducor/.dotnet/tools:/mnt/c/Users/ducor/srcs/flutter/bin:/snap/bin
+# environment
+VSCODE_LOG_STACK = false
+# environment
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-e8186e55-7346-48b5-bea9-f05881b5306f.sock
+# environment
+VSCODE_SERVER_TAR = /mnt/c/Users/ducor/AppData/Local/Temp/vscode-remote-wsl/da15b6fd3ef856477bf6f4fb29ba1b7af717770d/vscode-server-stable-linux-x64.tar.gz
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /home/dritsema/Codam/push_swap
+# default
+.LOADED := 
+# environment
+WSL_INTEROP = /run/WSL/9_interop
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/dritsema
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+LOGNAME = dritsema
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# makefile (from 'Makefile', line 9)
+SRCS = main.c error_check.c stack_utils.c sort_utils.c rotate.c reverse_rotate.c swap.c push.c test.c sort.c bubble_sort.c radix_sort.c quick_sort2.c
+# environment
+SHLVL = 1
+# makefile (from 'Makefile', line 29)
+LIBFT = libft/libft.a
+# makefile (from 'Makefile', line 1)
+CC = gcc
+# default
+MAKE_VERSION := 4.2.1
+# environment
+USER = dritsema
+# makefile
+.DEFAULT_GOAL := all
+# makefile (from 'Makefile', line 25)
+NAME = push_swap
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/ducor/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.2
+# default
+MAKE_COMMAND := make
+# makefile (from 'Makefile', line 27)
+INC = -Ilibft -Ift_printf -I.
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+VSCODE_HANDLES_SIGPIPE = true
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+LC_ALL = C
+# environment
+HOSTTYPE = x86_64
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# default
+.RECIPEPREFIX := 
+# environment
+LANG = C
+# environment
+TERM = xterm-256color
+# environment
+VSCODE_EXTHOST_WILL_SEND_SOCKET = true
+# environment
+WSL_DISTRO_NAME = Ubuntu-20.04
+# environment
+MOTD_SHOWN = update-motd
+# variable set hash-table stats:
+# Load=76/1024=7%, Rehash=0, Collisions=6/112=5%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2064, inode 111004): 16 files, no impossibilities.
+# src (device 2064, inode 111014): 16 files, no impossibilities so far.
+
+# 32 files, no impossibilities in 2 directories.
+
+# Implicit Rules
+
+obj/%.o: src/%.c
+#  recipe to execute (from 'Makefile', line 39):
+	@mkdir -p obj
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+# 1 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+# Not a target:
+src/push.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-06 14:52:11.7253042
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/sort_utils.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-11 21:42:24.2141165
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/error_check.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-06 14:52:11.7253042
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/rotate.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-11 17:13:14.9480868
+#  File has been updated.
+#  Successfully updated.
+
+all: push_swap
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Successfully updated.
+
+obj/sort.o: src/sort.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'sort'
+#  Last modified 2022-05-11 17:13:22.8480868
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 39):
+	@mkdir -p obj
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+# Not a target:
+src/quick_sort2.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-11 21:52:02.3941165
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/bubble_sort.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-06 14:52:11.7253042
+#  File has been updated.
+#  Successfully updated.
+
+obj/main.o: src/main.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'main'
+#  Last modified 2022-05-11 21:51:32.6541165
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 39):
+	@mkdir -p obj
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-11 21:54:30.3841165
+#  File has been updated.
+#  Successfully updated.
+
+obj/stack_utils.o: src/stack_utils.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stack_utils'
+#  Last modified 2022-05-11 17:13:22.7380868
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 39):
+	@mkdir -p obj
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+# Not a target:
+src/sort.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-11 17:13:14.9480868
+#  File has been updated.
+#  Successfully updated.
+
+libft/libft.a:
+#  Implicit rule search has not been done.
+#  Last modified 2022-05-11 17:13:23.6980868
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 50):
+	make -C libft/
+
+fclean: clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 61):
+	@rm -f $(NAME)
+	@rm -f ft_printf/libftprintf.a libft/libft.a
+
+obj/test.o: src/test.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'test'
+#  Last modified 2022-05-11 17:13:22.8680868
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 39):
+	@mkdir -p obj
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+# Not a target:
+src/main.c:
+#  Implicit rule search has been done.
+ 
+#  Last modified 2022-05-11 21:50:43.2441165
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/stack_utils.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-11 17:13:14.9480868
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/swap.o: src/swap.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'swap'
+#  Last modified 2022-05-11 17:13:22.8080868
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 39):
+	@mkdir -p obj
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+obj/reverse_rotate.o: src/reverse_rotate.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'reverse_rotate'
+#  Last modified 2022-05-11 17:13:22.7980868
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 39):
+	@mkdir -p obj
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+re: fclean all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/radix_sort.o: src/radix_sort.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'radix_sort'
+#  Last modified 2022-05-11 17:13:22.8980868
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 39):
+	@mkdir -p obj
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 57):
+	@rm -f *.o
+	@rm -rf obj
+	
+
+push_swap: obj/main.o obj/error_check.o obj/stack_utils.o obj/sort_utils.o obj/rotate.o obj/reverse_rotate.o obj/swap.o obj/push.o obj/test.o obj/sort.o obj/bubble_sort.o obj/radix_sort.o obj/quick_sort2.o libft/libft.a ft_printf/libftprintf.a
+#  Implicit rule search has not been done.
+#  Last modified 2022-05-11 21:53:57.3841165
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 36):
+	$(CC) $^ $(CFLAGS) $(INC) -o $@
+
+# Not a target:
+src/test.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-11 17:13:14.9480868
+#  File has been updated.
+#  Successfully updated.
+
+obj/push.o: src/push.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'push'
+#  Last modified 2022-05-11 17:13:22.8280868
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 39):
+	@mkdir -p obj
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+obj/sort_utils.o: src/sort_utils.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'sort_utils'
+#  Last modified 2022-05-11 21:53:57.2641165
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 39):
+	@mkdir -p obj
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+obj/error_check.o: src/error_check.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'error_check'
+#  Last modified 2022-05-11 17:13:22.7580868
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 39):
+	@mkdir -p obj
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+obj/rotate.o: src/rotate.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'rotate'
+#  Last modified 2022-05-11 17:13:22.7780868
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 39):
+	@mkdir -p obj
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+# Not a target:
+src/swap.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-06 14:52:11.7253042
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/reverse_rotate.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-06 14:52:11.7253042
+#  File has been updated.
+#  Successfully updated.
+
+obj/quick_sort2.o: src/quick_sort2.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'quick_sort2'
+#  Last modified 2022-05-11 21:52:06.1941165
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 39):
+	@mkdir -p obj
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+# Not a target:
+src/radix_sort.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-11 17:13:14.9480868
+#  File has been updated.
+#  Successfully updated.
+
+ft_printf/libftprintf.a:
+#  Implicit rule search has not been done.
+#  Last modified 2022-05-11 17:13:23.8380868
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 53):
+	make -C ft_printf/
+
+obj/bubble_sort.o: src/bubble_sort.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'bubble_sort'
+#  Last modified 2022-05-11 17:13:22.8780868
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 39):
+	@mkdir -p obj
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+# files hash-table stats:
+# Load=36/1024=4%, Rehash=0, Collisions=0/108=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 81 / storage = 917 B / avg = 11 B
+# current buf: size = 8162 B / used = 917 B / count = 81 / avg = 11 B
+
+# strcache performance: lookups = 116 / hit rate = 30%
+# hash-table stats:
+# Load=81/8192=1%, Rehash=0, Collisions=4/116=3%
+# Finished Make data base on Wed May 11 21:55:51 2022
+
+ 

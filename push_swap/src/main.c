@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:22 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/10 20:36:16 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/11 21:50:43 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 		ft_printf("Update indexes\n");
 		update_indexes(&stack_a, &stack_copy_a, argc - 1);
 		ft_printf("Quick sort\n");
-		quick_sort(&stack_a, &stack_b, argc - 1);
+		quick_sort2(&stack_a, &stack_b, argc - 1);
 		// radix_sort(&stack_a, &stack_b, argc);
 		// print_stacks(&stack_a, &stack_b);
 		freestack(&stack_copy_a);

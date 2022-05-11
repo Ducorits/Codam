@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/09 14:28:59 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/10 22:45:47 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/11 21:30:10 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,43 +172,63 @@ static void	recur2(t_link **stack_a, t_link **stack_b, int size_a)
 {
 	int	pushed;
 	int	tmp;
+	int	size;
 
-	ft_printf("Recur\n");
-	if (size_a > 5)
+	size = size_a;
+	ft_printf("Recur2\n");
+	ft_printf("stack size: %i\n", size);
+	if (size_a > 4)
 	{
 		pushed = filter_low(stack_a, stack_b, size_a);
 		reverse_a(stack_a, size_a - pushed);
 		size_a -= pushed;
 		// size_b += pushed;
 		recur2(stack_a, stack_b, size_a);
+		ft_printf("After calling recur2 size: %i\n", size);
 		tmp = filter_high(stack_a, stack_b, pushed);
 		reverse_b(stack_b, pushed - tmp);
-		if (tmp > 5)
+		if (tmp > 4)
 		{
 			recur2(stack_a, stack_b, tmp);
 		}
+		push_to_a(stack_a, stack_b, pushed - tmp);
+		if (tmp - pushed > 4)
+			recur2(stack_a, stack_b, tmp - pushed);
+		ft_printf("End recur2 size: %i\n", size);
 	}
 }
 
 static void	recur(t_link **stack_a, t_link **stack_b, int size_a, int size_b)
 {
-	int	pushed;
-	int	tmp;
+	int	pushed_a;
+	int	pushed_b;
+	int	size;
 
-	ft_printf("Recur\n");
-	if (size_a > 5)
+	size = size_a;
+	ft_printf("Recur with\n- size_a: %i\n- size_b: %i\n", size_a, size_b);
+	// ft_printf("stack size: %i\n", size);
+	if (size_a > 4)
 	{
-		pushed = filter_low(stack_a, stack_b, size_a);
-		size_a -= pushed;
-		size_b += pushed;
+		ft_printf("Filter low\n");
+		pushed_b = filter_low(stack_a, stack_b, size_a);
+		size_a -= pushed_b;
+		size_b += pushed_b;
+		ft_printf("Pushed_b: %i\ncurrent stack sizes:\n- size_a: %i\n- size_b: %i\n", pushed_b, size_a, size_b);
 		recur(stack_a, stack_b, size_a, size_b);
-		tmp = filter_high(stack_a, stack_b, pushed);
-		reverse_b(stack_b, pushed - tmp);
-		if (tmp > 5)
+		ft_printf("After calling recur with size_a: %i\n", size);
+		ft_printf("Filter_high\n");
+		pushed_a = filter_high(stack_a, stack_b, pushed_b);
+		reverse_b(stack_b, pushed_b - pushed_a);
+		ft_printf("Pushed_a: %i\ncurrent stack sizes:\n- size_a: %i\n- size_b: %i\n", pushed_a, size_a + pushed_a, size_b - pushed_a);
+		if (pushed_a > 4)
 		{
-			recur2(stack_a, stack_b, tmp);
+			recur2(stack_a, stack_b, pushed_a);
 		}
+		push_to_a(stack_a, stack_b, pushed_b - pushed_a);
+		if (pushed_a - pushed_b > 4)
+			recur2(stack_a, stack_b, pushed_a - pushed_b);
 	}
+	ft_printf("End recur size: %i\n", size);
 }
 
 /*
