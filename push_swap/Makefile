@@ -18,13 +18,14 @@ SRCS	=	main.c \
 			sort.c \
 			bubble_sort.c \
 			radix_sort.c \
+			quick_sort.c \
 			quick_sort2.c
 
 OBJS	=	$(patsubst %.c, obj/%.o, $(SRCS))
 
 NAME	=	push_swap
 
-INC		=	-Ilibft -Ift_printf -I.
+INC		=	-I ./include
 
 LIBFT	=	libft/libft.a
 
@@ -35,7 +36,7 @@ all: $(NAME)
 $(NAME): $(OBJS) $(LIBFT) $(FT_PRINTF)
 	$(CC) $^ $(CFLAGS) $(INC) -o $@
 
-obj/%.o: src/%.c
+obj/%.o: src/%.c include/push_swap.h
 	@mkdir -p obj
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 

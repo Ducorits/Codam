@@ -6,12 +6,14 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:20 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/11 22:21:56 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/12 16:19:02 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+# define SUBSIZE 10
 
 typedef struct s_link	t_link;
 struct	s_link
@@ -60,6 +62,7 @@ void	ss(t_link **tack_a, t_link **stack_b);
 // Sort functions
 void	bubble_sort(t_link **stack_a, int argc);
 void	radix_sort(t_link **stack_a, t_link **stack_b, int argc);
+void	quick_sort(t_link **stack_a, t_link **stack_b, int size);
 void	quick_sort2(t_link **stack_a, t_link **stack_b, int size);
 void	sort_indexes(t_link **copy_a, t_link **copy_b, int argc);
 int		sort(t_link **stack_a, t_link **stack_b, int argc);
@@ -68,6 +71,8 @@ void	update_indexes(t_link **stack_a, t_link **copy_a, int size);
 // Quick sort funtions
 void	filter_a(t_link **stack_a, t_link **stack_b, int size);
 void	filter_b(t_link **stack_a, t_link **stack_b, int size);
+void	recurb(t_link **stack_a, t_link **stack_b, int size);
+void	recura(t_link **stack_a, t_link **stack_b, int size);
 
 // Testing functions (remove before publish)
 int		check_sorted(t_link **stack, int size);
