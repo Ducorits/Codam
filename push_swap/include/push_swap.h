@@ -6,14 +6,14 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:20 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/12 16:19:02 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/15 21:10:46 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# define SUBSIZE 10
+# define SUBSIZE 1
 
 typedef struct s_link	t_link;
 struct	s_link
