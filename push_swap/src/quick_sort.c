@@ -6,18 +6,15 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/09 14:28:59 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/15 18:59:00 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/16 16:58:46 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "push_swap.h"
 
-/*
-	Filter based on the average.
-	everything lower than the average.
-	everything that matches the filter gets pushed to stack b.
-*/
+/*	Filter everything lower than the average.
+	everything that matches the filter gets pushed to stack b. */
 static int	filter_low(t_link **stack_a, t_link **stack_b, int size)
 {
 	int				i;
@@ -41,11 +38,8 @@ static int	filter_low(t_link **stack_a, t_link **stack_b, int size)
 	return (count);
 }
 
-/*
-	Filter based on the average.
-	everything higher than the average.
-	everything that matches the filter gets pushed to stack a.
-*/
+/*	Filter everything higher than the average.
+	everything that matches the filter gets pushed to stack a. */
 static int	filter_high(t_link **stack_a, t_link **stack_b, int size)
 {
 	int				i;
@@ -97,11 +91,9 @@ void	recura(t_link **stack_a, t_link **stack_b, int size)
 		push_to_a(stack_a, stack_b, pushed);
 }
 
-/*
-Move all indexes that are above the average index from stack a to stack b.
-Update average index and repeat untill stack a is a size we can easily sort.
-Sort stack a and move 
-*/
+/*	Move all indexes that are above the average index from stack a to stack b.
+	Update average index and repeat untill stack a is a size we can easily sort.
+	Sort stack a and move everything back in chunks. */
 void	quick_sort(t_link **stack_a, t_link **stack_b, int size)
 {
 	int	pushed;

@@ -19,7 +19,8 @@ SRCS	=	main.c \
 			bubble_sort.c \
 			radix_sort.c \
 			quick_sort.c \
-			quick_sort2.c
+			quick_sort2.c \
+			my_sort.c
 
 OBJS	=	$(patsubst %.c, obj/%.o, $(SRCS))
 
@@ -57,7 +58,7 @@ endif
 clean:
 	@rm -f *.o
 	@rm -rf obj
-	
+
 fclean: clean
 	@rm -f $(NAME)
 	@rm -f ft_printf/libftprintf.a libft/libft.a
