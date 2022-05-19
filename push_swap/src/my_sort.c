@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/09 14:28:59 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/18 19:00:24 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/19 14:25:20 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,12 @@ void	count_moves(t_link **stack_a, t_link **stack_b, int size)
 				index_a = 0;
 				while (tmp_a->next != *stack_a)
 				{
-					if (tmp_a->index > tmp_b->index)
+					if ((tmp_a->index > tmp_b->index
+							&& tmp_a->index < tmp_b->next->index)
+						|| (tmp_a->index > tmp_b->index
+							&& tmp_a->index == (unsigned int)size)
+						|| (tmp_a->index < tmp_b->next->index
+							&& tmp_a->index == 0))
 					{
 						if (index_a >= size / 2)
 							tmp_b->rotate_a = (size - index_a - 1) * -1;
@@ -99,13 +104,15 @@ void	count_moves(t_link **stack_a, t_link **stack_b, int size)
 					tmp_a = tmp_a->next;
 				}
 			}
+			else
+				tmp_b->rotate_a = 0;
 			index_b++;
 			tmp_b = tmp_b->next;
 		}
 	}
 }
 
-unsigned int	best_to_move(t_link **stack_a, t_link **stack_b)
+unsigned int	best_to_move(t_link **stack_b)
 {
 	t_link			*tmp;
 	unsigned int	best_to_move;
@@ -113,21 +120,89 @@ unsigned int	best_to_move(t_link **stack_a, t_link **stack_b)
 	int				least_weight;
 
 	tmp = *stack_b;
+	best_to_move = (*stack_b)->index;
 	while (tmp->next != *stack_b)
 	{
-		weight = tmp->rotate_b;
 		if (tmp->rotate_b >= 0)
 		{
 			if (tmp->rotate_a >= tmp->rotate_b)
 				weight = tmp->rotate_a;
+			else if (tmp->rotate_a >= 0)
+				weight = tmp->rotate_b;
+			else
+				weight = (tmp->rotate_a * -1) + tmp->rotate_b;
+		}
+		else
+		{
+			if (tmp->rotate_a < tmp->rotate_b)
+				weight = tmp->rotate_a * -1;
+			else if (tmp->rotate_a < 0)
+				weight = tmp->rotate_b * -1;
+			else
+				weight = (tmp->rotate_b * -1) + tmp->rotate_a;
+		}
+		if (weight < least_weight)
+		{
+			least_weight = weight;
+			best_to_move = tmp->index;
 		}
 		tmp = tmp->next;
 	}
+	return (best_to_move);
 }
 
-void	do_best_moves(t_link **stack_a, t_link **stack_b)
+void	do_best_moves(t_link **stack_a, t_link **stack_b, unsigned int to_move)
 {
+	t_link	*tmp;
 
+	tmp = *stack_b;
+	if (*stack_b)
+	{
+		while (tmp->index != to_move)
+			tmp = tmp->next;
+		while (tmp->rotate_a < 0 && tmp->rotate_b < 0)
+		{
+			// ft_printf("rotate_a and rotate b < 0\n");
+			rrr(stack_a, stack_b);
+			tmp->rotate_a++;
+			tmp->rotate_b++;
+		}
+		while (tmp->rotate_a > 0 && tmp->rotate_b > 0)
+		{
+			// ft_printf("rotate_a and rotate b > 0\n");
+			rr(stack_a, stack_b);
+			tmp->rotate_a--;
+			tmp->rotate_b--;
+		}
+		while (tmp->rotate_a != 0)
+		{
+			// ft_printf("rotate_a != 0\n");
+			if (tmp->rotate_a > 0)
+			{
+				ra(stack_a);
+				tmp->rotate_a--;
+			}
+			else if (tmp->rotate_a < 0)
+			{
+				rra(stack_a);
+				tmp->rotate_a++;
+			}
+		}
+		while (tmp->rotate_b != 0)
+		{
+			// ft_printf("rotate_b != 0\n");
+			if (tmp->rotate_b > 0)
+			{
+				rb(stack_b);
+				tmp->rotate_b--;
+			}
+			else if (tmp->rotate_b < 0)
+			{
+				rrb(stack_b);
+				tmp->rotate_b++;
+			}
+		}
+	}
 }
 
 void	print_move(t_link **stack_b)
@@ -148,7 +223,8 @@ void	print_move(t_link **stack_b)
 	Sort stack a and move everything back in chunks. */
 void	my_sort(t_link **stack_a, t_link **stack_b, int size)
 {
-	int	filter_size;
+	int				filter_size;
+	unsigned int	to_move;
 
 	filter_size = size;
 	while (*stack_a)
@@ -157,10 +233,17 @@ void	my_sort(t_link **stack_a, t_link **stack_b, int size)
 	}
 	while (*stack_b)
 	{
+		// ft_printf("my_sort while\n");
+		// ft_printf("count_moves\n");
 		count_moves(stack_a, stack_b, size);
-		best_to_move(stack_a, stack_b);
-		do_best_moves(stack_a, stack_b);
+		// print_move(stack_b);
+		// ft_printf("best_to_move\n");
+		to_move = best_to_move(stack_b);
+		// ft_printf("to move %i\n", to_move);
+		// ft_printf("do_best_moves\n");
+		do_best_moves(stack_a, stack_b, to_move);
+		if ((*stack_b)->index == to_move)
+			pa(stack_a, stack_b);
 		size--;
 	}
-	// print_move(stack_b);
 }
