@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/09 14:28:59 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/23 22:27:35 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/23 23:55:34 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,62 @@ int	get_stack_size(t_link **stack)
 	return (size);
 }
 
+unsigned int	get_lowest_index(t_link **stack)
+{
+	t_link			*tmp;
+	unsigned int	lowest;
+
+	tmp = *stack;
+	lowest = tmp->index;
+	while (tmp)
+	{
+		if (tmp->index < lowest)
+			lowest = tmp->index;
+		tmp = tmp->next;
+		if (tmp == *stack)
+			tmp = 0;
+	}
+	return (lowest);
+}
+
+unsigned int	get_highest_index(t_link **stack)
+{
+	t_link			*tmp;
+	unsigned int	highest;
+
+	tmp = *stack;
+	highest = tmp->index;
+	while (tmp)
+	{
+		if (tmp->index > highest)
+			highest = tmp->index;
+		tmp = tmp->next;
+		if (tmp == *stack)
+			tmp = 0;
+	}
+	return (highest);
+}
+
 int	move_count_a(t_link **stack_a, t_link *link, unsigned int size)
 {
 	t_link			*tmp;
 	unsigned int	count;
 	unsigned int	i;
+	unsigned int	lowest;
+	unsigned int	highest;
 
 	i = 0;
 	count = 0;
 	if (*stack_a)
 	{
+		lowest = get_lowest_index(stack_a);
+		highest = get_highest_index(stack_a);
 		tmp = *stack_a;
 		while (i < size)
 		{
 			if ((link->index > tmp->previous->index && link->index < tmp->index)
-				|| (link->index == 0 && tmp->index < tmp->previous->index)
-				|| (link->index == size - 1 && tmp->index > tmp->next->index))
+				|| (link->index < lowest && tmp->index < tmp->previous->index)
+				|| (link->index > highest && tmp->index > tmp->next->index))
 				break ;
 			count++;
 			tmp = tmp->next;
@@ -230,6 +270,35 @@ void	print_move(t_link **stack_b)
 	}
 }
 
+void	set_right(t_link **stack_a, int size)
+{
+	int		rotate;
+	t_link	*tmp;
+
+	rotate = 0;
+	tmp = *stack_a;
+	while (tmp->index != 0)
+	{
+		rotate++;
+		tmp = tmp->next;
+	}
+	if (rotate > size / 2)
+		rotate = (size - rotate) * -1;
+	while (rotate != 0)
+	{
+		if (rotate > 0)
+		{
+			ra(stack_a);
+			rotate--;
+		}
+		else if (rotate < 0)
+		{
+			rra(stack_a);
+			rotate++;
+		}
+	}
+}
+
 /*	Move all indexes that are above the average index from stack a to stack b.
 	Update average index and repeat untill stack a is a size we can easily sort.
 	Sort stack a and move everything back in chunks. */
@@ -247,12 +316,13 @@ void	my_sort(t_link **stack_a, t_link **stack_b, int size)
 		// ft_printf("my_sort while\n");
 		// ft_printf("count_moves\n");
 		update_move_count(stack_a, stack_b);
-		print_move(stack_b);
-		ft_printf("Stack_a:\n");
-		print_stack(stack_a);
+		// print_move(stack_b);
+		// ft_printf("Stack_a:\n");
+		// print_stack(stack_a);
 		// ft_printf("to move %i\n", to_move);
 		// ft_printf("do_best_moves\n");
 		do_best_moves(stack_a, stack_b);
 		pa(stack_a, stack_b);
 	}
+	set_right(stack_a, size);
 }
