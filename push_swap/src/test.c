@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/11 14:01:44 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/09 16:38:01 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/23 21:37:55 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	print_stack(t_link **stack)
 				tmp = *stack;
 			else
 				tmp = tmp->next;
-			ft_printf("- val: %i, Index: %i\n", tmp->content, tmp->index);
+			ft_printf("- val: %i	Index: %i\n", tmp->content, tmp->index);
 		}
 	}
 }

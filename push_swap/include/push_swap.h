@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:20 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/18 15:59:08 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/21 14:05:44 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ struct	s_link
 	unsigned int	index;
 	int				rotate_a;
 	int				rotate_b;
+	int				moves;
 	struct s_link	*next;
 };
 
