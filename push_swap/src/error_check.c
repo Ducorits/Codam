@@ -6,12 +6,11 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 13:12:20 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/04/14 18:29:34 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/24 14:02:52 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "../ft_printf/ft_printf.h"
+#include "libft.h"
 #include <unistd.h>
 
 static int	check_duplicates(int argc, char **argv)

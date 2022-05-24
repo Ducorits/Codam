@@ -10,17 +10,15 @@ SRCS	=	main.c \
 			error_check.c \
 			stack_utils.c \
 			sort_utils.c \
-			rotate.c \
-			reverse_rotate.c \
-			swap.c \
-			push.c \
-			test.c \
-			sort.c \
-			bubble_sort.c \
-			radix_sort.c \
-			quick_sort.c \
-			quick_sort2.c \
-			my_sort.c
+			sorting/smaller_sort.c \
+			sorting/index_sorting.c \
+			sorting/hybrid_sort.c \
+			sorting/hybrid_sort_utils.c \
+			instructions/rotate.c \
+			instructions/reverse_rotate.c \
+			instructions/swap.c \
+			instructions/push.c \
+			misc/test.c
 
 OBJS	=	$(patsubst %.c, obj/%.o, $(SRCS))
 
@@ -38,7 +36,7 @@ $(NAME): $(OBJS) $(LIBFT) $(FT_PRINTF)
 	$(CC) $^ $(CFLAGS) $(INC) -o $@
 
 obj/%.o: src/%.c include/push_swap.h
-	@mkdir -p obj
+	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 ifeq ($(TESTFLAGS), 1)

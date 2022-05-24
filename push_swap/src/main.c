@@ -6,15 +6,11 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:22 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/23 23:57:01 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/24 17:54:57 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
-#include "libft.h"
-#include <unistd.h>
-#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
@@ -33,14 +29,12 @@ int	main(int argc, char **argv)
 		fill_stack(argv, &stack_a);
 		sort_indexes(&stack_copy_a, &stack_copy_b, argc - 1);
 		update_indexes(&stack_a, &stack_copy_a, argc - 1);
-		my_sort(&stack_a, &stack_b, argc - 1);
-		// quick_sort(&stack_a, &stack_b, argc - 1);
-		// radix_sort(&stack_a, &stack_b, argc);
-		// print_stacks(&stack_a, &stack_b);
+		if (argc - 1 > 5)
+			hybrid_sort(&stack_a, &stack_b, argc - 1);
+		else
+			small_sort(&stack_a, &stack_b, argc - 1);
 		freestack(&stack_copy_a);
-		freestack(&stack_copy_b);
 		freestack(&stack_a);
-		freestack(&stack_b);
 	}
 	else
 		return (0);

@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   bubble_sort.c                                      :+:    :+:            */
+/*   test.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/05/02 17:36:02 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/05 14:30:07 by dritsema      ########   odam.nl         */
+/*   Created: 2022/04/11 14:01:44 by dritsema      #+#    #+#                 */
+/*   Updated: 2022/05/24 17:57:20 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "ft_printf.h"
+#include "push_swap.h"
 
-void	bubble_sort(t_link **stack_a, int argc)
+void	print_stack(t_link **stack)
 {
-	int	size;
-	int	i;
+	t_link	*tmp;
 
-	size = argc - 1;
-	while (check_sorted(stack_a, size) == 0)
+	tmp = 0;
+	if (*stack != 0)
 	{
-		i = 0;
-		ft_printf("Not sorted\n");
-		while (i < size)
+		while (tmp != (*stack)->previous)
 		{
-			print_stack(stack_a);
-			if ((*stack_a)->content > (*stack_a)->next->content
-				&& i != size - 1)
-			{
-				sa(stack_a);
-			}
-			ra(stack_a);
-			i++;
+			if (tmp == 0)
+				tmp = *stack;
+			else
+				tmp = tmp->next;
+			ft_printf("- val: %i	Index: %i\n", tmp->content, tmp->index);
 		}
-		print_stack(stack_a);
 	}
-	ft_printf("It's sorted you good bro\n");
+}
+
+void	print_stacks(t_link **stack_a, t_link **stack_b)
+{
+	ft_printf("\nStack_a:\n");
+	print_stack(stack_a);
+	ft_printf("\nStack_B:\n");
+	print_stack(stack_b);
 }

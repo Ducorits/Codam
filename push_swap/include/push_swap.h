@@ -6,14 +6,12 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:20 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/21 14:05:44 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/24 18:38:18 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-# define SUBSIZE 10
 
 typedef struct s_link	t_link;
 struct	s_link
@@ -28,59 +26,62 @@ struct	s_link
 };
 
 // Stack utility functions
-t_link	**make_empty_stack(void);
-void	fill_stack(char **argv, t_link **stack);
-int		freestack(t_link **stack);
-void	add_to_top(t_link **stack, t_link *new);
-void	add_to_bottom(t_link **stack, t_link *new);
+
+void			fill_stack(char **argv, t_link **stack);
+int				freestack(t_link **stack);
+void			add_to_top(t_link **stack, t_link *new);
+void			add_to_bottom(t_link **stack, t_link *new);
+int				get_stack_size(t_link **stack);
 
 // Sort utility functions
-int		get_average_index(t_link **stack, int size);
-void	push_to_b(t_link **stack_a, t_link **stack_b, int amount);
-void	push_to_a(t_link **stack_a, t_link **stack_b, int amount);
-void	reverse_b(t_link **stack_b, int amount);
-void	reverse_a(t_link **stack_a, int amount);
+
+int				get_average_index(t_link **stack, int size);
+int				check_sorted(t_link **stack, int size);
+unsigned int	get_lowest_index(t_link **stack);
+unsigned int	get_highest_index(t_link **stack);
 
 // Input error checking
-int		input_error_check(int argc, char **argv);
+
+int				input_error_check(int argc, char **argv);
 
 // Rotate functions
-void	ra(t_link **stack_a);
-void	rb(t_link **stack_b);
-void	rr(t_link **stack_a, t_link **stack_b);
-void	rra(t_link **stack_a);
-void	rrb(t_link **stack_b);
-void	rrr(t_link **stack_a, t_link **stack_b);
+
+void			ra(t_link **stack_a);
+void			rb(t_link **stack_b);
+void			rr(t_link **stack_a, t_link **stack_b);
+void			rra(t_link **stack_a);
+void			rrb(t_link **stack_b);
+void			rrr(t_link **stack_a, t_link **stack_b);
 
 // Push functions
-void	push(t_link **stack_1, t_link **stack_2);
-void	pa(t_link **stack_a, t_link **stack_b);
-void	pb(t_link **stack_a, t_link **stack_b);
+
+void			push(t_link **stack_1, t_link **stack_2);
+void			pa(t_link **stack_a, t_link **stack_b);
+void			pb(t_link **stack_a, t_link **stack_b);
 
 // Swap functions
-void	sa(t_link **stack_a);
-void	sb(t_link **stack_b);
-void	ss(t_link **tack_a, t_link **stack_b);
+
+void			sa(t_link **stack_a);
+void			sb(t_link **stack_b);
+void			ss(t_link **tack_a, t_link **stack_b);
 
 // Sort functions
-void	bubble_sort(t_link **stack_a, int argc);
-void	radix_sort(t_link **stack_a, t_link **stack_b, int argc);
-void	quick_sort(t_link **stack_a, t_link **stack_b, int size);
-void	quick_sort2(t_link **stack_a, t_link **stack_b, int size);
-void	my_sort(t_link **stack_a, t_link **stack_b, int size);
-void	sort_indexes(t_link **copy_a, t_link **copy_b, int argc);
-int		sort(t_link **stack_a, t_link **stack_b, int argc);
-void	update_indexes(t_link **stack_a, t_link **copy_a, int size);
 
-// Quick sort funtions
-void	filter_a(t_link **stack_a, t_link **stack_b, int size);
-void	filter_b(t_link **stack_a, t_link **stack_b, int size);
-void	recurb(t_link **stack_a, t_link **stack_b, int size);
-void	recura(t_link **stack_a, t_link **stack_b, int size);
+void			small_sort(t_link **stack_a, t_link **stack_b, int size);
+void			hybrid_sort(t_link **stack_a, t_link **stack_b, int size);
+void			sort_indexes(t_link **copy_a, t_link **copy_b, int argc);
+void			update_indexes(t_link **stack_a, t_link **copy_a, int size);
 
-// Testing functions (remove before publish)
-int		check_sorted(t_link **stack, int size);
-void	print_stacks(t_link **stack_a, t_link **stack_b);
-void	print_stack(t_link **stack);
+// Hybrid sort funtions
+
+void			set_right(t_link **stack_a, int size);
+int				move_count_a(t_link **stack_a, t_link *link, unsigned int size);
+void			calc_moves(t_link *link);
+void			update_move_count(t_link **stack_a, t_link **stack_b);
+void			do_best_moves(t_link **stack_a, t_link **stack_b);
+
+// Debug Functions (remove before publish)
+
+void			print_stacks(t_link **stack_a, t_link **stack_b);
 
 #endif //PUSH_SWAP_H

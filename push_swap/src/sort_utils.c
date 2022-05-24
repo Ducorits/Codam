@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/11 21:41:48 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/11 21:42:24 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/24 18:20:00 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,50 +31,71 @@ int	get_average_index(t_link **stack, int size)
 	return (average);
 }
 
-void	push_to_b(t_link **stack_a, t_link **stack_b, int amount)
+unsigned int	get_lowest_index(t_link **stack)
 {
-	int	i;
+	t_link			*tmp;
+	unsigned int	lowest;
 
-	i = 0;
-	while (i < amount)
+	tmp = *stack;
+	lowest = tmp->index;
+	while (tmp)
 	{
-		pb(stack_a, stack_b);
-		i++;
+		if (tmp->index < lowest)
+			lowest = tmp->index;
+		tmp = tmp->next;
+		if (tmp == *stack)
+			tmp = 0;
 	}
+	return (lowest);
 }
 
-void	push_to_a(t_link **stack_a, t_link **stack_b, int amount)
+unsigned int	get_highest_index(t_link **stack)
 {
-	int	i;
+	t_link			*tmp;
+	unsigned int	highest;
 
-	i = 0;
-	while (i < amount)
+	tmp = *stack;
+	highest = tmp->index;
+	while (tmp)
 	{
-		pa(stack_a, stack_b);
-		i++;
+		if (tmp->index > highest)
+			highest = tmp->index;
+		tmp = tmp->next;
+		if (tmp == *stack)
+			tmp = 0;
 	}
+	return (highest);
 }
 
-void	reverse_b(t_link **stack_b, int amount)
+/*	Goes through size number of links in stack.
+	Returns 0 if link content is larger than the next link content.
+	Else returns 1.
+	*/
+int	check_sorted(t_link **stack, int size)
 {
-	int	i;
+	t_link	*tmp;
+	int		i;
 
 	i = 0;
-	while (i < amount)
+	tmp = *stack;
+	if (*stack != 0 && size == 0)
 	{
-		rrb(stack_b);
-		i++;
+		while (tmp != (*stack)->previous->previous)
+		{
+			if (tmp->content > tmp->next->content)
+				return (0);
+			tmp = tmp->next;
+		}
 	}
-}
-
-void	reverse_a(t_link **stack_a, int amount)
-{
-	int	i;
-
-	i = 0;
-	while (i < amount)
+	else
 	{
-		rra(stack_a);
-		i++;
+		while (i < size - 1)
+		{
+			if (tmp->content > tmp->next->content)
+				return (0);
+			tmp = tmp->next;
+			i++;
+		}
 	}
+	return (1);
 }
