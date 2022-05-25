@@ -6,11 +6,12 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 15:06:41 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/25 18:52:33 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/25 17:25:44 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf.h"
 
 void	sort2(t_link **stack_a)
 {

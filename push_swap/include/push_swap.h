@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:20 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/24 18:38:18 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/25 17:18:20 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,6 @@ void			do_best_moves(t_link **stack_a, t_link **stack_b);
 // Debug Functions (remove before publish)
 
 void			print_stacks(t_link **stack_a, t_link **stack_b);
+void			print_stack(t_link **stack);
 
 #endif //PUSH_SWAP_H

@@ -6,11 +6,10 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/09 14:28:59 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/16 16:58:46 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/25 18:53:40 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "push_swap.h"
 
 /*	Filter everything lower than the average.

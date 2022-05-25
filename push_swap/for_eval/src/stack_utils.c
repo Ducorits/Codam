@@ -6,11 +6,12 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 15:58:57 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/25 18:54:25 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/24 14:27:00 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf.h"
 #include "libft.h"
 #include <unistd.h>
 
