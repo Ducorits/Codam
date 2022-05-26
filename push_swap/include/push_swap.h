@@ -6,12 +6,14 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:20 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/25 17:18:20 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/26 16:47:47 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+# define SUBSIZE 2
 
 typedef struct s_link	t_link;
 struct	s_link
@@ -79,10 +81,5 @@ int				move_count_a(t_link **stack_a, t_link *link, unsigned int size);
 void			calc_moves(t_link *link);
 void			update_move_count(t_link **stack_a, t_link **stack_b);
 void			do_best_moves(t_link **stack_a, t_link **stack_b);
-
-// Debug Functions (remove before publish)
-
-void			print_stacks(t_link **stack_a, t_link **stack_b);
-void			print_stack(t_link **stack);
 
 #endif //PUSH_SWAP_H

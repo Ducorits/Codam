@@ -17,8 +17,7 @@ SRCS	=	main.c \
 			instructions/rotate.c \
 			instructions/reverse_rotate.c \
 			instructions/swap.c \
-			instructions/push.c \
-			misc/test.c
+			instructions/push.c
 
 OBJS	=	$(patsubst %.c, obj/%.o, $(SRCS))
 

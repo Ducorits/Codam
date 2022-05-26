@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_isprint.c                                       :+:    :+:            */
+/*   ft_isalpha.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dritsema <marvin@codam.nl>                   +#+                     */
+/*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/10/06 16:18:55 by dritsema      #+#    #+#                 */
-/*   Updated: 2021/10/28 23:16:47 by dritsema      ########   odam.nl         */
+/*   Created: 2022/05/26 19:05:17 by dritsema      #+#    #+#                 */
+/*   Updated: 2022/05/26 19:05:25 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int	c)
+int	ft_isalpha(int c)
 {
-	return (c >= 32 && c <= 126);
+	return ((c >= 65 && c <= 90) || (c >= 97 && c <= 122));
 }

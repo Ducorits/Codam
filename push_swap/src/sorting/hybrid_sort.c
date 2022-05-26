@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/09 14:28:59 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/25 18:52:47 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/05/26 13:58:52 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ void	do_best_moves(t_link **stack_a, t_link **stack_b)
 	}
 }
 
-/*	Move all indexes that are above the average index from stack a to stack b.
-	Update average index and repeat untill stack a is a size we can easily sort.
+/*	Move all indexes that are below the average index from stack a to stack b.
+	Update average index and repeat untill stack a is empty.
 	Sort stack a by moving back the link with the least moves needed to position
 	correctly in stack a */
 void	hybrid_sort(t_link **stack_a, t_link **stack_b, int size)

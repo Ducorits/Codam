@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_memset.c                                        :+:    :+:            */
+/*   ft_isprint.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dritsema <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/10/07 12:11:18 by dritsema      #+#    #+#                 */
-/*   Updated: 2021/10/28 21:03:08 by dritsema      ########   odam.nl         */
+/*   Created: 2021/10/06 16:18:55 by dritsema      #+#    #+#                 */
+/*   Updated: 2022/05/26 19:05:02 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memset(void *b, int c, size_t len)
+int	ft_isprint(int c)
 {
-	unsigned char	*a;
-
-	a = b;
-	while (len > 0)
-	{
-		len--;
-		*a = c;
-		a++;
-	}
-	return (b);
+	return (c >= 32 && c <= 126);
 }
