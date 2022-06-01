@@ -1,0 +1,3 @@
+[submodule "Duco_libft"]
+	path = Duco_libft
+	url = https://github.com/Ducorits/Duco_libft.git
