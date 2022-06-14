@@ -27,8 +27,6 @@ INC		=	-I ./include
 
 LIBFT	=	libft/libft.a
 
-FT_PRINTF	= ft_printf/libftprintf.a
-
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(FT_PRINTF)
@@ -38,19 +36,8 @@ obj/%.o: src/%.c include/push_swap.h
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
-ifeq ($(TESTFLAGS), 1)
 $(LIBFT):
 	make -C libft/
-
-$(FT_PRINTF):
-	make -C ft_printf/
-else
-$(LIBFT):
-	make -C libft/
-
-$(FT_PRINTF):
-	make -C ft_printf/
-endif
 
 clean:
 	@rm -f *.o
@@ -58,6 +45,6 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -f ft_printf/libftprintf.a libft/libft.a
+	@make -C libft/ fclean
 
 re: fclean all

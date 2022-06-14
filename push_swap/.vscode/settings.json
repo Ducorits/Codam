@@ -2,6 +2,7 @@
 	"files.associations": {
 		"random": "c",
 		"chrono": "c",
-		"variant": "c"
+		"variant": "c",
+		"libft.h": "c"
 	}
 }

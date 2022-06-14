@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 15:06:41 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/25 18:52:33 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/06/07 12:51:39 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ void	small_sort(t_link **stack_a, t_link **stack_b, int size)
 		sort2(stack_a);
 	else if (size == 3)
 		sort3(stack_a);
-	else
+	else if (size > 1)
 		sort5(stack_a, stack_b, size);
 }

@@ -6,39 +6,65 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 13:12:20 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/25 19:10:08 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/06/10 13:08:14 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <unistd.h>
+#include <stdio.h>
+
+static int	push_swap_convert(char *str, int *n)
+{
+	int	mins;
+	int	prev;
+
+	*n = 0;
+	prev = 0;
+	mins = 1;
+	while (ft_iswhitespace(*str))
+		str++;
+	if (*str == '-')
+		mins = -1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
+	{
+		prev = *n;
+		*n = *n * 10 + ((*str - 48) * mins);
+		if ((*n < prev && prev > 0) || (prev < 0 && *n > prev))
+			return (0);
+		str++;
+	}
+	return (1);
+}
 
 static int	check_duplicates(int argc, char **argv)
 {
 	int	i;
 	int	j;
 	int	*nums;
+	int	ret;
 
 	i = 0;
-	nums = malloc(sizeof(int) * (argc - 1));
-	while (argv[i])
+	ret = 0;
+	nums = malloc(sizeof(int) * (argc));
+	while (argv[i] && ret != 1)
 	{
-		nums[i] = ft_atoi(argv[i]);
+		if (!push_swap_convert(argv[i], &nums[i]))
+			ret = 1;
 		j = 0;
-		while (j < i)
+		while (j < i && ret != 1)
 		{
 			if (nums[j] == nums[i])
-			{
-				free(nums);
-				return (1);
-			}
+				ret = 1;
 			else
 				j++;
 		}
 		i++;
 	}
 	free(nums);
-	return (0);
+	return (ret);
 }
 
 static int	check_digits(char **argv)

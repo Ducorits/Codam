@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:22 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/05/26 16:48:09 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/06/14 14:46:28 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	t_link	*stack_copy_a;
 	t_link	*stack_copy_b;
 
-	if (argc > 1 && !input_error_check(argc, &argv[1]))
+	if (argc > 2 && !input_error_check(argc - 1, &argv[1]))
 	{
 		stack_a = 0;
 		stack_b = 0;
@@ -29,9 +29,9 @@ int	main(int argc, char **argv)
 		fill_stack(argv, &stack_a);
 		sort_indexes(&stack_copy_a, &stack_copy_b, argc - 1);
 		update_indexes(&stack_a, &stack_copy_a, argc - 1);
-		if (argc - 1 > 5)
+		if (argc - 1 > 5 && !check_sorted(&stack_a, argc - 1))
 			hybrid_sort(&stack_a, &stack_b, argc - 1);
-		else
+		else if (!check_sorted(&stack_a, argc - 1))
 			small_sort(&stack_a, &stack_b, argc - 1);
 		freestack(&stack_copy_a);
 		freestack(&stack_a);
