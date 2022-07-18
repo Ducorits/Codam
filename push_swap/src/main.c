@@ -6,7 +6,7 @@
 /*   By: dritsema <dritsema@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 13:08:22 by dritsema      #+#    #+#                 */
-/*   Updated: 2022/06/14 17:50:31 by dritsema      ########   odam.nl         */
+/*   Updated: 2022/07/18 20:31:07 by dritsema      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,5 @@ int	main(int argc, char **argv)
 		freestack(&stack_copy_a);
 		freestack(&stack_a);
 	}
-	else
-		return (0);
 	return (0);
 }
